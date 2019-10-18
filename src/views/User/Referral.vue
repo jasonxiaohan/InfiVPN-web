@@ -117,8 +117,8 @@ export default {
           params: {
             token: this.$store.state.token,
             email: "0130198718@qq.com",
-            page:1,
-            size:10
+            page:this.currentPage,
+            size:this.pageSize
           }
         }).then(response => {
           if (response.data.code === 0) {
