@@ -54,7 +54,8 @@
         <el-table-column prop="registerTime" label="Regiter Time">
         </el-table-column>
       </el-table>
-      <el-pagination background layout="prev, pager, next" :total="invitationTotal">
+      <el-pagination background layout="prev, pager, next" :total="invitationTotal" :current-page="currentPage" :page-size="pageSize" @current-change="handleCurrentChange"
+                @size-change="handleSizeChange">
       </el-pagination>
     </div>
 
@@ -99,6 +100,8 @@ export default {
         extends: '1 Month',
         time: '2019.08.20 10:00:23'
       }],
+      currentPage: 1,
+      pageSize: 10,
       invitationTotal: 0
     }
   },
@@ -125,7 +128,16 @@ export default {
             alert(response.data.msg);
           }
         });
-    }
+    },
+     handleCurrentChange(val){
+          this.currentPage = val;
+
+          this.getInvitation();
+      },
+
+        handleSizeChange(val){
+            this.pageSize = val;
+        }
   }
 }
 
