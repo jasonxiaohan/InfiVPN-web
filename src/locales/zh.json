@@ -1,0 +1,60 @@
+{
+    "header": {
+        "welcome": "欢迎",
+        "pricing": "价钱",
+        "apps": "设备",
+        "account": "我的账号",
+        "myplan": "我的计划",
+        "referral": "邀请",
+        "changepassword": "更改密码",
+        "logout": "退出"
+    },
+    "bottom": {
+        "bottom-1": "EasyVPN",
+        "bottom-2": "用户协议",
+        "bottom-3": "私有协议",
+        "bottom-4": "关于我们",
+        "bottom-5": "关于EasyVPN",
+        "bottom-6": "教程",
+        "bottom-7": "支持",
+        "bottom-8": "常见问题",
+        "bottom-9": "联系我们"
+    },
+    "login": {
+        "title": "登录",
+        "account": "帐号",
+        "password": "密码",
+        "button": "登录",
+        "forgotLabel": "忘记密码?",
+        "message": "请检查账号/密码!"
+    },
+    "changepassword": {
+        "title": "更改密码",
+        "text": "如果你想改变你的密码，请点击下面的按钮来改变它.",
+        "oldpassword": "旧密码",
+        "newpassword": "新密码",
+        "confirmpassword": "确认密码",
+        "button": "提交"
+    },
+    "referral": {
+        "title": "邀请",
+        "h2": "邀请朋友加入EasyVPN，获得更多的免费时间",
+        "url": "我的邀请链接",
+        "intro-1":"复制邀请网址并分享给您的朋友",
+        "intro-2":"您的朋友加入EasyVPN并购买定价计划（免费体验除外）",
+        "intro-3":"每5个朋友完成上述步骤，即可免费获得1个月以上的免费试用期",
+        "invitation": "我的邀请",
+        "invited": "邀请朋友",
+        "rewards":"我的奖赏"
+    },
+    "forgotpassword":{
+        "title": "忘记密码",
+        "account": "帐号",
+        "verifiaccount": "确认帐号",
+        "send": "发送",
+        "password": "新密码",
+        "confirmpassword": "确认密码",
+        "button": "提交",
+        "login": "去登录"
+    }
+}

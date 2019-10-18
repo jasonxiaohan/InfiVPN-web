@@ -1,0 +1,60 @@
+{
+    "header": {
+        "welcome": "Welcome",
+        "pricing": "Pricing",
+        "apps": "VPN Apps",
+        "account": "My Account",
+        "myplan": "My plan",
+        "referral": "Referral",
+        "changepassword": "Change Password",
+        "logout": "Log Out"
+    },
+    "bottom": {
+        "bottom-1": "EasyVPN",
+        "bottom-2": "User Agreement",
+        "bottom-3": "Private Policy",
+        "bottom-4": "About Us",
+        "bottom-5": "About EasyVPN",
+        "bottom-6": "Tutorial",
+        "bottom-7": "Support",
+        "bottom-8": "FAQ",
+        "bottom-9": "Follow Us"
+    },
+    "login": {
+        "title": "Login",
+        "account": "Account",
+        "password": "Password",
+        "button": "Login",
+        "forgotLabel": "Forgot Password?",
+        "message": "Please check the account/password!"
+    },
+    "changepassword": {
+        "title": "Change Password",
+        "text": "If you want to change your password, please click the following button to change it.",
+        "oldpassword": "Old Password",
+        "newpassword": "New Password",
+        "confirmpassword": "Password Confirmation",
+        "button": "Submit"
+    },
+    "referral":{
+        "title": "Referral",
+        "h2": "Invite friends to join EasyVPN, get more free time",
+        "url": "My invitation url",
+        "intro-1":"Copy the invitation url and share to your friends",
+        "intro-2":"Your friends join in InfiVPN and buy a pricing plan(except the free experiences)",
+        "intro-3":"Every 5 friends completed the steps above, you will get more 1 month for free",
+        "invitation": "My Invitation",
+        "invited": "friends invited",
+        "rewards":"My Rewards"
+    },
+    "forgotpassword":{
+        "title": "Forgot Password",
+        "account": "Email",
+        "verifiaccount": "Email Verification",
+        "send": "Send",
+        "password": "New Password",
+        "confirmpassword": "Password Confirmation",
+        "button": "Submit",
+        "login": "Login Now"
+    }
+}
