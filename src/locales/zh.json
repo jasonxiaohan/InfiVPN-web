@@ -20,6 +20,21 @@
         "bottom-8": "常见问题",
         "bottom-9": "联系我们"
     },
+    "home":{
+        "h2": "无限制上网",
+        "ul-li-1": "安全",
+        "ul-li-2": "自由",
+        "ul-li-3": "私有",
+        "button": "立即获取InfiVPN",
+        "h3": "畅享全球无限制的访问",
+        "div-content": "InfiVPN克服了内容限制和审查制度，可从世界任何地方无限访问视频，音乐，社交媒体等。",
+        "el-row2-h3": "保护您的所有设备",
+        "el-row2-content": "您是否在工作中使用Windows，在家中使用macOS以及在特殊项目中使用Linux？ 没问题。 每个都有一个InfiVPN应用程序，以及适用于iOS，Android和Android TV的应用程序。 哦，还有用于Chrome和Firefox的加密代理扩展。 最重要的是，使用一个InfiVPN帐户，您可以同时保护多达6台设备。",
+        "el-row2-support": "适用于:",
+        "el-row2-button": "检查所有设备",
+        "el-row3-h3":"随时随地享受快速稳定的连接",
+        "el-row3-content": "互联网缓冲会影响我们的心情吗？ 在观看视频或下载文件时必须等待是不可接受的吗？ 不用担心，在60个Countris或地区提供5700 RocketVPN服务。 服务器越多，负载越低，并且服务器分布越广泛，用户必须找到更多靠近的服务器。"
+    },
     "login": {
         "title": "登录",
         "account": "帐号",
@@ -56,5 +71,23 @@
         "confirmpassword": "确认密码",
         "button": "提交",
         "login": "去登录"
+    },
+    "pricing":{
+        "h2": "所有结算包括:",
+        "ul-li1": "全球超过3500台服务器",
+        "ul-li2": "同时在线6台设备",
+        "ul-li3": "24小时x 7小时在线服务",
+        "ul-li4": "用于",
+        "section1": "选择一个计划",
+        "section2": "创建帐号",
+        "section3": "选择您的付款方式",
+        "button": "现在加入",
+        "login-label" : "已经有帐号了？",
+        "login": "登入",
+        "email": "邮箱",
+        "password": "密码",
+        "confirmPassword": "确认密码",
+        "form-label": "提交此表格，即表示同意",
+        "service": "服务条款"
     }
 }

@@ -20,6 +20,21 @@
         "bottom-8": "FAQ",
         "bottom-9": "Follow Us"
     },
+    "home":{
+        "h2": "Unrestricted Internet",
+        "ul-li-1": "Security",
+        "ul-li-2": "Freedom",
+        "ul-li-3": "Private",
+        "button": "Get InfiVPN now",
+        "h3": "Enjoy unrestricted access worldwide",
+        "div-content": "InfiVPN defeats content restrictions and censorship to deliver unlimited access to video, music, social media, and more, from anywhere in the world.",
+        "el-row2-h3": "Protect all your devices",
+        "el-row2-content": "Do you use Windows at work, macOS at home, and Linux for your special projects? No problem. There’s a NordVPN application for each of these, plus apps for iOS, Android, and Android TV. Oh, and also encrypted proxy extensions for Chrome and Firefox. Best of all, with one NordVPN account, you can secure up to 6 devices at the same time.",
+        "el-row2-support": "Available on:",
+        "el-row2-button": "Check all the devices",
+        "el-row3-h3":"Anytime, anywhere, enjoy fast and stable connection",
+        "el-row3-content": "Does Internet buffering affect our mood? Is it unacceptable to have to wait while watching video or downloading files? Don’t worry, with the 5700 RocketVPN services in 60 Countris or  regions. The more servers, the lower the load, and the more widely distributed the servers, the more opportunities users have to find servers closer together."
+    },
     "login": {
         "title": "Login",
         "account": "Account",
@@ -56,5 +71,23 @@
         "confirmpassword": "Password Confirmation",
         "button": "Submit",
         "login": "Login Now"
+    },
+    "pricing":{
+        "h2": "All the settlement include:",
+        "ul-li1": "More than 3500 servers in the world",
+        "ul-li2": "6 device online in the same time",
+        "ul-li3": "24h x 7 online services",
+        "ul-li4": "Used in",
+        "section1": "Select a plan",
+        "section2": "Create Secure Account",
+        "section3": "Select your preferred method of payment",
+        "button": "Join Now",
+        "login-label": "Already have an account? ",
+        "login": "Sign in",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Password Confirmation",
+        "form-label": "By submitting this form, you agree to our",
+        "service": "Terms of Service."
     }
 }

@@ -2,13 +2,13 @@
   <div class="page-home">
     <div class="block-top">
       <div class="left">
-        <h2>Unrestricted Internet</h2>
+        <h2>{{this.$i18n.t("home.h2")}}</h2>
         <ul>
-          <li><img src="../assets/home/top_icon1.png" alt="">Security</li>
-          <li><img src="../assets/home/top_icon2.png" alt="">Freedom</li>
-          <li><img src="../assets/home/top_icon3.png" alt="">Private</li>
+          <li><img src="../assets/home/top_icon1.png" alt="">{{this.$i18n.t("home.ul-li-1")}}</li>
+          <li><img src="../assets/home/top_icon2.png" alt="">{{this.$i18n.t("home.ul-li-2")}}</li>
+          <li><img src="../assets/home/top_icon3.png" alt="">{{this.$i18n.t("home.ul-li-3")}}</li>
         </ul>
-        <el-button class="getnow" @click="open">Get InfiVPN now</el-button>
+        <el-button class="getnow" @click="open">{{this.$i18n.t("home.button")}}</el-button>
       </div>
       <div class="right">
         <img src="../assets/home/bg_price.png" alt="">
@@ -22,23 +22,19 @@
           <img class="face" src="../assets/home/img_list_1.png" alt="">
         </el-col>
         <el-col :xs="24" :sm="16" :md="16" :lg="16" :xl="16" class="pl-50">
-          <h3>Enjoy unrestricted access worldwide</h3>
-          <div class="content">ExpressVPN defeats content restrictions and censorship to deliver unlimited access to
-            video, music, social media, and more, from anywhere in the world.
+          <h3>{{ this.$i18n.t("home.h3") }}</h3>
+          <div class="content">{{ this.$i18n.t("home.div-content") }}
           </div>
-          <el-button @click="open">Get InfiVPN now</el-button>
+          <el-button @click="open">{{this.$i18n.t("home.button")}}</el-button>
         </el-col>
       </el-row>
       <el-row>
         <el-col :xs="24" :sm="16" :md="16" :lg="16" :xl="16" class="pr-50">
-          <h3>Protect all your devices</h3>
-          <div class="content">Do you use Windows at work, macOS at home, and Linux
-            for your special projects? No problem. There’s a NordVPN application for each of these, plus apps for iOS,
-            Android, and Android TV. Oh, and also encrypted proxy extensions for Chrome and Firefox. Best of all, with
-            one NordVPN account, you can secure up to 6 devices at the same time.
+          <h3>{{ this.$i18n.t("home.el-row2-h3") }}</h3>
+          <div class="content">{{ this.$i18n.t("home.el-row2-content") }}
           </div>
           <div class="surrport">
-            Available on:
+            {{ this.$i18n.t("home.el-row2-support") }}
             <ul>
               <li><img src="../assets/home/android.png" alt=""></li>
               <li><img src="../assets/home/win.png" alt=""></li>
@@ -50,7 +46,7 @@
               <li><img src="../assets/home/linux.png" alt=""></li>
             </ul>
           </div>
-          <el-button>Check all the devices</el-button>
+          <el-button>{{ this.$i18n.t("home.el-row2-button") }}</el-button>
         </el-col>
         <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
           <img class="face" src="../assets/home/img_list_2.png" alt="">
@@ -61,13 +57,10 @@
           <img class="face" src="../assets/home/img_list_3.png" alt="">
         </el-col>
         <el-col :xs="24" :sm="16" :md="16" :lg="16" :xl="16" class="pl-50">
-          <h3>Anytime, anywhere, enjoy fast and stable connection</h3>
-          <div class="content">Does Internet buffering affect our mood? Is it unacceptable to have to wait while
-            watching video or downloading files? Don’t worry, with the 5700 RocketVPN services in 60 Countris or
-            regions. The more servers, the lower the load, and the more widely distributed the servers, the more
-            opportunities users have to find servers closer together.
+          <h3>{{ this.$i18n.t("home.el-row3-h3") }}</h3>
+          <div class="content">{{ this.$i18n.t("home.el-row3-content") }}
           </div>
-          <el-button @click="open">Get InfiVPN now</el-button>
+          <el-button @click="open">{{this.$i18n.t("home.button")}}</el-button>
         </el-col>
       </el-row>
       <div class="service">

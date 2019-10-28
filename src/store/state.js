@@ -1,7 +1,7 @@
 import { getToken } from '@/libs/util'
 
 export default {
-    siteroot: "http://localhost:8081/",
+    siteroot: "http://52.156.162.199:8080/",
     token: getToken(),
     username: "",
 }

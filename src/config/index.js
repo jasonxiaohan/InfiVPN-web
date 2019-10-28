@@ -2,7 +2,7 @@ export default {
   /**
    * @description 配置显示在浏览器标签的title
    */
-  title: 'vpn-admin',
+  title: 'InfiVPN-web',
   /**
    * @description token在Cookie中存储的天数，默认1天
    */
@@ -18,7 +18,7 @@ export default {
    */
   baseUrl: {
     dev: 'http://52.64.114.149:8080/',
-    pro: 'http://localhost:8081/'
+    pro: 'http://52.156.162.199:8080/restful/'
   },
   /**
    * @description 默认打开的首页的路由name值，默认为home
