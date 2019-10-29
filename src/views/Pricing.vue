@@ -87,7 +87,7 @@
 
 
         <el-col :span="8" v-for="(plan,index) in listPlans" :key="plan.id">                                            
-            <template v-if="plan.id==2">
+            <template v-if="plan.id==1">
                 <div class="price-box" @click="checkedPlan(index,plan.id)" :class="{green:choicePlan==plan.id}">
                 <div class="head">{{ plan.name }}
                   <div class="zhekou">
@@ -97,30 +97,28 @@
                 </div>
                 <div class="subTit">Most Popular</div>
                 <div class="body">
-                  <div class="price-old">$ {{ plan.actualFee }}/{{ plan.span }}</div>
+                  <div class="price-old">${{ plan.totalFee }}/{{ plan.span }}</div>
                   <div class="price-now">
-                    $ <b>2.75</b> /{{plan.span}}
+                    $ <b>{{ plan.actualFee }}</b> /{{plan.span}}
                   </div>
-                  <div class="time">Save $ 192.90</div>
-                  <div class="dec"><span>$ 492.00</span> $ 194.25 for {{plan.name}}</div>
+                  <div class="time">Save ${{(plan.totalFee-plan.actualFee).toFixed(2)}}</div>
+                  <div class="dec"><span>${{plan.totalFee}}</span> ${{ plan.actualFee }} for {{plan.name}}</div>
                 </div>
               </div>
               <div class="my-plan">
                 <div v-if="myPlan===plan.id"><img src="../assets/pricing/star.png" alt="">Your plan</div>
               </div>
             </template>
-
-
             <template v-else>
               <div class="price-box" @click="checkedPlan(index, plan.id)" :class="{green:choicePlan==plan.id}">
                 <div class="head">{{ plan.name }}</div>
                 <div class="body">
-                  <div class="price-old">$ {{plan.actualFee}}/{{ plan.span }}</div>
+                  <div class="price-old">${{plan.totalFee}}/{{ plan.span }}</div>
                   <div class="price-now">
-                    $ <b>3.54</b> /{{plan.span}}
+                    $ <b>{{ plan.actualFee }}</b> /{{plan.span}}
                   </div>
-                  <div class="time">Save $ 192.90</div>
-                  <div class="dec"><span>$ 492.00</span> $ 194.25 for {{plan.name}}</div>
+                  <div class="time">Save ${{(plan.totalFee-plan.actualFee).toFixed(2)}}</div>
+                  <div class="dec"><span>${{plan.totalFee}}</span> ${{ plan.actualFee }} for {{plan.name}}</div>
                 </div>
               </div>
               <div class="my-plan">
@@ -131,7 +129,7 @@
 
       </el-row>
     </section>
-    <section v-if="this.$store.state.token == false">
+    <section v-if="this.$store.state.token == ''">
       <div class="tit">
         <span>2</span>{{this.$i18n.t("pricing.section2")}}
       </div>
@@ -141,14 +139,14 @@
           <router-link to="/login">{{this.$i18n.t("pricing.login")}}</router-link>
         </div>
         <el-form class="regForm" :model="regForm" ref="regForm" label-position="top" :inline="true">
-          <el-form-item v-bind:label="Email">
-            <el-input placeholder="Email" v-model="regForm.email"></el-input>
+          <el-form-item v-bind:label="$t('pricing.email')">
+            <el-input :placeholder="$t('pricing.email-label')" v-model="regForm.email"></el-input>
           </el-form-item>
-          <el-form-item v-bind:label="Password">
-            <el-input type="password" placeholder="Password length cannot be less than 6 digits " v-model="regForm.password" show-password></el-input>
+          <el-form-item v-bind:label="$t('pricing.password')">
+            <el-input type="password" :placeholder="$t('pricing.password-label')" v-model="regForm.password" show-password></el-input>
           </el-form-item>
-          <el-form-item v-bind:label="ConfirmPassword">
-            <el-input type="password" placeholder="Password Confirmation" v-model="regForm.confirmPassword" show-password></el-input>
+          <el-form-item v-bind:label="$t('pricing.confirmPassword')">
+            <el-input type="password" :placeholder="$t('pricing.confirmpassword-label')" v-model="regForm.confirmPassword" show-password></el-input>
           </el-form-item>
         </el-form>
       </div>
@@ -189,19 +187,19 @@
               <ul class="order-detail">
                 <li>
                   <div>EasyVPN {{currentPlan.name}}</div>
-                  <div>$ {{currentPlan.actualFee}}</div>
+                  <div>${{currentPlan.actualFee}}</div>
                 </li>
                 <li>
                   <div>Discount</div>
-                  <div>-$ 130</div>
+                  <div>-${{currentPlan.discount}}</div>
                 </li>
                 <li>
                   <div>VAT</div>
-                  <div>$ 0.0</div>
+                  <div>$0.0</div>
                 </li>
                 <li>
                   <div>Total</div>
-                  <div>$ 832.00</div>
+                  <div>${{currentPlan.actualFee}}</div>
                 </li>
               </ul>
               <el-form class="cardForm" label-position="top" :inline="true">
@@ -260,25 +258,25 @@
             </el-col>
             <el-col :span="6">
               <ul class="pay-tips">
-                <li class="head">Plan Details</li>
+                <li class="head">{{this.$i18n.t("pricing.ul-li-head")}}</li>
                 <li>
-                  <img src="../assets/account/ok.png" alt="">24/7 customer support by live chat
+                  <img src="../assets/account/ok.png" alt="">{{this.$i18n.t('myplan.plan-detail-ul-li-1')}}
                 </li>
                 <li>
-                  <img src="../assets/account/ok.png" alt="">Ultra-fast servers in 23 countries
+                  <img src="../assets/account/ok.png" alt="">{{this.$i18n.t('myplan.plan-detail-ul-li-2')}}
                 </li>
                 <li>
-                  <img src="../assets/account/ok.png" alt="">Best-in-class security & encryption
+                  <img src="../assets/account/ok.png" alt="">{{this.$i18n.t('myplan.plan-detail-ul-li-3')}}
                 </li>
                 <li>
-                  <img src="../assets/account/ok.png" alt="">No activity logs & no connection logs
+                  <img src="../assets/account/ok.png" alt="">{{this.$i18n.t('myplan.plan-detail-ul-li-4')}}
                 </li>
               </ul>
             </el-col>
           </el-row>
         </div>
-        <el-button class="black join" v-if="this.$store.state.token === false" @click="join">{{this.$i18n.t("pricing.button")}}</el-button>
-        <el-button class="black join" v-if="this.$store.state.token === true">Renew</el-button>
+        <el-button class="black join" v-if="this.$store.state.token == ''" @click="join">{{this.$i18n.t("pricing.button")}}</el-button>
+        <el-button class="black join" v-if="this.$store.state.token !==false" @click="renew">{{this.$i18n.t("pricing.button-renew")}}</el-button>
         <div class="rules">{{this.$i18n.t("pricing.form-label")}}
           <a @click="openDialog(2)">{{this.$i18n.t("pricing.service")}}</a>
         </div>
@@ -373,23 +371,13 @@
 export default {
   name: 'Pricing',
   components: {},
-  data() {
-    let email = (rule, value, callback) => {
-      if(value === "") {
-        callback(new Error("请输入帐号"));
-      } else {
-        callback();
-      }
-    };
+  data() {    
     return {
       regForm: {
         email: "",
         password: "",
         confirmPassword: ""
-      },
-      Email: i18n.t("pricing.email"),
-      Password: i18n.t("pricing.password"),
-      ConfirmPassword: i18n.t("pricing.confirmPassword"),
+      },      
       dialogVisible: false,
       payType: '1',
       remember: true,
@@ -456,7 +444,7 @@ export default {
           });
           return;
         }
-        if(this.regForm.password.trim().length < 6) {
+        if(this.regForm.password.trim().length <= 6) {
             this.$message.warning({
             message: "密码长度不能小于6位",
             showClose: true
@@ -482,7 +470,7 @@ export default {
         const that = this
         this.$ajax({
           method: "post",
-          url: this.$store.state.siteroot + "restful/vpn/api/addUser",
+          url: this.$store.state.siteroot + "restful/vpn/addUser",
           params: {
             emailAddress: that.regForm.email.trim(),
             password: that.regForm.password.trim()
@@ -498,28 +486,37 @@ export default {
             that.$store.commit('setUserInfo', v)
             that.$router.push("/myPlan");
           } else {
-            alert(response.data.msg);
+            this.$message.warning({
+              message: response.data.msg,
+              showClose: true
+            });
           }
         });
 
     },
-    
+    renew(){
+
+    },    
     // 付费策略接口
     listPlan() {
       const that = this
       this.$ajax({
           method: "post",
-          url: this.$store.state.siteroot + "restful/vpn/api/vpn/listPlans"
+          url: this.$store.state.siteroot + "restful/vpn/listPlans"
         }).then(response => {
           if (response.data.code === 0) {
-            response.data.data.forEach((item,index) =>{
-              if(item.name !='bonus') {
-                that.listPlans.push(item);
-              }
-            }) 
-            this.currentPlan = response.data.data[0]
-          } else {
-            alert(response.data.msg);
+            // response.data.data.forEach((item,index) =>{
+            //   if(item.name !='bonus') {
+            //     that.listPlans.push(item);
+            //   }
+            // }) 
+            that.listPlans = response.data.data
+            this.currentPlan = response.data.data[1]
+          } else {            
+            this.$message.warning({
+              message: response.data.msg,
+              showClose: true
+            });
           }
         });
     }

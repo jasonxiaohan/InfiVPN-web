@@ -1,32 +1,32 @@
 <template>
   <div class="page-myPlan">
     <section class="block-content">
-      <h2>My Services</h2>
+      <h2>{{ this.$i18n.t("myplan.h2") }}</h2>
       <div class="gray-box plan">
         <div class="plan-head">
           <b v-if="!isFree">3 Months VPN</b>
           <b v-if="isFree">Free Experiences</b>
-          <div>-Private and secure internet access</div>
+          <div>{{ this.$i18n.t("myplan.head-div") }}</div>
           <span class="status">Active</span>
-          <el-button @click="goPage">Extend</el-button>
+          <el-button @click="goPage">{{ this.$i18n.t("myplan.button") }}</el-button>
         </div>
         <el-row :gutter="20" class="planState myplan">
           <el-col :span="12" class="left">
             <el-form class="myPlanForm" label-position="left" label-width="140px">
-              <el-form-item label="Validity">
+              <el-form-item v-bind:label="$t('myplan.validity')">
                 2019.8.20 10:00:00-2019.12.20 10:00:00
               </el-form-item>
-              <el-form-item label="Total Amount">
+              <el-form-item v-bind:label="$t('myplan.totalamount')">
                 <div v-if="!isFree">$ 199.50</div>
                 <div v-if="isFree">$ 0</div>
               </el-form-item>
-              <el-form-item label="Traffic">
+              <el-form-item v-bind:label="$t('myplan.traffic')">
                 2.38 GB
               </el-form-item>
-              <el-form-item label="Payment method">
+              <el-form-item v-bind:label="$t('myplan.paymentmethod')">
                 Apple pay
               </el-form-item>
-              <el-form-item label="Device">
+              <el-form-item v-bind:label="$t('myplan.device')">
                 <div v-if="!isFree">3</div>
                 <div v-if="isFree">1</div>
               </el-form-item>
@@ -36,79 +36,77 @@
             <ul class="leftTime">
               <li>
                 <div>6</div>
-                Months
+                {{this.$i18n.t("myplan.planstate-ul-li-1")}}
               </li>
               <li>
                 <div>6</div>
-                Days
+                {{this.$i18n.t("myplan.planstate-ul-li-2")}}
               </li>
               <li>
                 <div>23</div>
-                Hours
+                {{this.$i18n.t("myplan.planstate-ul-li-3")}}
               </li>
               <li>
                 <div>59</div>
-                Minutes
+                {{this.$i18n.t("myplan.planstate-ul-li-4")}}
               </li>
               <li>
                 <div>59</div>
-                Seconds
+                {{this.$i18n.t("myplan.planstate-ul-li-5")}}
               </li>
             </ul>
           </el-col>
         </el-row>
-        <div v-if="!isFree" class="notify">You can use our services in 3 devices, and only 1 device online at the same
-          time
+        <div v-if="!isFree" class="notify">{{this.$i18n.t("myplan.notfree")}}
         </div>
-        <div v-if="isFree" class="notify">You can use our services in 1 devices, upgrade to our pricing plan, you can
-          use in 3 devices
+        <div v-if="isFree" class="notify">{{this.$i18n.t("myplan.free")}}
         </div>
       </div>
-      <h2>Service Assurance</h2>
+      <h2>{{this.$i18n.t("myplan.service-h2")}}</h2>
       <div class="service">
         <ul>
           <li>
             <div>
               <img src="../../assets/home/icon5.png" alt="">
             </div>
-            Servers in 182 countryies
+            {{this.$i18n.t("myplan.ul-li-1")}}
           </li>
           <li>
             <div>
               <img src="../../assets/home/icon2.png" alt="">
             </div>
-            Reliable Connection
+            {{this.$i18n.t("myplan.ul-li-1")}}
           </li>
           <li>
             <div>
               <img src="../../assets/home/icon3.png" alt="">
             </div>
-            Privacy Security
+            {{this.$i18n.t("myplan.ul-li-2")}}
           </li>
           <li>
             <div>
               <img src="../../assets/home/icon4.png" alt="">
             </div>
-            Reliable
+            {{this.$i18n.t("myplan.ul-li-3")}}
           </li>
         </ul>
       </div>
       <div class="gray-box plan-detail">
         <div class="tit">
-          Plan Details
+         {{this.$i18n.t("myplan.ul-li-4")}}
         </div>
         <ul class="four">
           <li>
-            <img src="../../assets/account/ok.png" alt="">24/7 customer support by live chat
+            <img src="../../assets/account/ok.png" alt="">{{this.$i18n.t("myplan.plan-detail-ul-li-1")}}
           </li>
           <li>
-            <img src="../../assets/account/ok.png" alt="">Ultra-fast servers in 23 countries
+            <img src="../../assets/account/ok.png" alt="">{{this.$i18n.t("myplan.plan-detail-ul-li-2")}}
           </li>
           <li>
-            <img src="../../assets/account/ok.png" alt="">Best-in-class security & encryption
+            <img src="../../assets/account/ok.png" alt="">{{this.$i18n.t("myplan.plan-detail-ul-li-3")}}
           </li>
           <li>
-            <img src="../../assets/account/ok.png" alt="">No activity logs & no connection logs
+            <img src="../../assets/account/ok.png" alt="">{{this.$i18n.t("myplan.plan-detail-ul-li-4")}}
           </li>
         </ul>
       </div>

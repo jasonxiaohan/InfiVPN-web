@@ -2,10 +2,10 @@
   <div class="page-login">
     <h2>{{this.$i18n.t("login.title")}}</h2>
     <el-form class="loginForm" label-position="top" label-width="80px" :model="loginForm">
-      <el-form-item v-bind:label="Account">
+      <el-form-item v-bind:label="$t('login.account')">
         <el-input v-model="loginForm.account"></el-input>
       </el-form-item>
-      <el-form-item v-bind:label="Password">
+      <el-form-item v-bind:label="$t('login.password')">
         <el-input type="admin" v-model="loginForm.password" show-password></el-input>
       </el-form-item>
       <el-form-item>
@@ -25,9 +25,7 @@ export default {
       loginForm: {
         account: "",
         password: ""
-      },
-      Account: i18n.t("login.account"),
-      Password: i18n.t("login.password")
+      }
     };
   },
   mounted() {},
@@ -48,10 +46,10 @@ export default {
         const that = this
         this.$ajax({
           method: "post",
-          url: this.$store.state.siteroot + "/vpn/user/login",
+          url: this.$store.state.siteroot + "restful/vpn/login",
           params: {
-            username: that.loginForm.account,
-            password: that.loginForm.password
+            Account: that.loginForm.account,
+            Password: that.loginForm.password
           }
         }).then(response => {
           if (response.data.code === 0) {
@@ -60,11 +58,14 @@ export default {
               "isShow": true,
               "isLogin": true
             }
-            that.$store.commit('setToken', response.data.data.token)
+            that.$store.commit('setToken', response.data.data[0].token)
             that.$store.commit('setUserInfo', v)
             that.$router.push("/myPlan");
           } else {
-            alert(response.data.msg);
+            this.$message.warning({
+              message: response.data.msg,
+              showClose: true
+            });
           }
         });
       }

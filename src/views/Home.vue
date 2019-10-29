@@ -64,31 +64,31 @@
         </el-col>
       </el-row>
       <div class="service">
-        <h3>Service Assurance</h3>
+        <h3>{{this.$i18n.t("home.service-h3")}}</h3>
         <ul>
           <li>
             <div>
               <img src="../assets/home/icon1.png" alt="">
             </div>
-            Refund In 30 Days
+            {{this.$i18n.t("home.service-li1")}}
           </li>
           <li>
             <div>
               <img src="../assets/home/icon2.png" alt="">
             </div>
-            Reliable Connection
+            {{this.$i18n.t("home.service-li2")}}
           </li>
           <li>
             <div>
               <img src="../assets/home/icon3.png" alt="">
             </div>
-            Privacy Security
+            {{this.$i18n.t("home.service-li3")}}
           </li>
           <li>
             <div>
               <img src="../assets/home/icon4.png" alt="">
             </div>
-            Reliable
+            {{this.$i18n.t("home.service-li4")}}
           </li>
         </ul>
       </div>

@@ -33,7 +33,12 @@
         "el-row2-support": "适用于:",
         "el-row2-button": "检查所有设备",
         "el-row3-h3":"随时随地享受快速稳定的连接",
-        "el-row3-content": "互联网缓冲会影响我们的心情吗？ 在观看视频或下载文件时必须等待是不可接受的吗？ 不用担心，在60个Countris或地区提供5700 RocketVPN服务。 服务器越多，负载越低，并且服务器分布越广泛，用户必须找到更多靠近的服务器。"
+        "el-row3-content": "互联网缓冲会影响我们的心情吗？ 在观看视频或下载文件时必须等待是不可接受的吗？ 不用担心，在60个Countris或地区提供5700 RocketVPN服务。 服务器越多，负载越低，并且服务器分布越广泛，用户必须找到更多靠近的服务器。",
+        "service-h3": "保险服务",
+        "service-li1": "30天内退款",
+        "service-li2": "可靠的连接",
+        "service-li3": "隐私与安全",
+        "service-li4": "可靠"
     },
     "login": {
         "title": "登录",
@@ -49,7 +54,12 @@
         "oldpassword": "旧密码",
         "newpassword": "新密码",
         "confirmpassword": "确认密码",
-        "button": "提交"
+        "button": "提交",
+        "message-login": "请登录",
+        "message-old-password": "旧密码不能为空",
+        "message-password-length": "密码长度需要大于6位",
+        "message-confirm-password": "确认密码不能为空",
+        "messgae-confirm-password-equal": "输入两次密码不相同"
     },
     "referral": {
         "title": "邀请",
@@ -82,12 +92,43 @@
         "section2": "创建帐号",
         "section3": "选择您的付款方式",
         "button": "现在加入",
+        "button-renew": "更新",
         "login-label" : "已经有帐号了？",
         "login": "登入",
         "email": "邮箱",
         "password": "密码",
         "confirmPassword": "确认密码",
+        "email-label": "邮箱",        
+        "password-label": "密码长度需要大于6位数字",
+        "confirmpassword-label": "确认密码",        
         "form-label": "提交此表格，即表示同意",
-        "service": "服务条款"
-    }
+        "service": "服务条款",
+        "ul-li-head": "计划详情"
+    },
+    "myplan": {
+        "h2": "我的服务",
+        "head-div": "-私人和安全的互联网访问",
+        "button": "续费",
+        "validity": "有效期",
+        "totalamount": "总金额",
+        "traffic": "流量",
+        "paymentmethod": "付款方式",
+        "device": "设备",
+        "planstate-ul-li-1":"月",
+        "planstate-ul-li-2":"天",
+        "planstate-ul-li-3":"时",
+        "planstate-ul-li-4":"分",
+        "planstate-ul-li-5":"秒",
+        "free": "您可以在1台设备中使用我们的服务，升级到我们的价格计划，可以在3台设备中使用",
+        "notfree": "您可以在3台设备中使用我们的服务，并且一次只能在线使用1台设备",
+        "service-h2": "保险服务",
+        "ul-li-1": "182个国家/地区的服务器",
+        "ul-li-2": "可靠的连接",
+        "ul-li-3": "隐私与安全",
+        "ul-li-4": "可靠",
+        "plan-detail-ul-li-1": "支持全天候客户实时聊天",
+        "plan-detail-ul-li-2": "在23个国家超快速的服务器",
+        "plan-detail-ul-li-3": "最佳的一流的安全和加密",
+        "plan-detail-ul-li-4": "没有活动日志和无连接日志"
+    }    
 }

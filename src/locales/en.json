@@ -33,7 +33,12 @@
         "el-row2-support": "Available on:",
         "el-row2-button": "Check all the devices",
         "el-row3-h3":"Anytime, anywhere, enjoy fast and stable connection",
-        "el-row3-content": "Does Internet buffering affect our mood? Is it unacceptable to have to wait while watching video or downloading files? Don’t worry, with the 5700 RocketVPN services in 60 Countris or  regions. The more servers, the lower the load, and the more widely distributed the servers, the more opportunities users have to find servers closer together."
+        "el-row3-content": "Does Internet buffering affect our mood? Is it unacceptable to have to wait while watching video or downloading files? Don’t worry, with the 5700 RocketVPN services in 60 Countris or  regions. The more servers, the lower the load, and the more widely distributed the servers, the more opportunities users have to find servers closer together.",
+        "service-h3": "Service Assurance",
+        "service-li1": "Refund In 30 Days",
+        "service-li2": "Reliable Connection",
+        "service-li3": "Privacy Security",
+        "service-li4": "Reliable"
     },
     "login": {
         "title": "Login",
@@ -49,7 +54,12 @@
         "oldpassword": "Old Password",
         "newpassword": "New Password",
         "confirmpassword": "Password Confirmation",
-        "button": "Submit"
+        "button": "Submit",
+        "message-login": "Please sign in",
+        "message-old-password": "Old password cannot be empty",
+        "message-password-length": "Password length needs to be greater than 6 digits",
+        "message-confirm-password": "confirm password can not be blank",
+        "messgae-confirm-password-equal": "Enter two passwords differently"
     },
     "referral":{
         "title": "Referral",
@@ -82,12 +92,43 @@
         "section2": "Create Secure Account",
         "section3": "Select your preferred method of payment",
         "button": "Join Now",
+        "button-renew": "Renew",
         "login-label": "Already have an account? ",
         "login": "Sign in",
         "email": "Email",
         "password": "Password",
         "confirmPassword": "Password Confirmation",
+        "email-label": "Email",        
+        "password-label": "Password length needs to be greater than 6 digits",
+        "confirmpassword-label": "Password Confirmation",
         "form-label": "By submitting this form, you agree to our",
-        "service": "Terms of Service."
+        "service": "Terms of Service.",
+        "ul-li-head": "Plan Details"
+    },
+    "myplan": {
+        "h2": "My Services",
+        "head-div": "-Private and secure internet access",
+        "button": "Extend",
+        "validity": "Validity",
+        "totalamount": "Total Amount",
+        "traffic": "Traffic",
+        "paymentmethod": "Payment method",
+        "device": "Device",
+        "planstate-ul-li-1":"Months",
+        "planstate-ul-li-2":"Days",
+        "planstate-ul-li-3":"Hours",
+        "planstate-ul-li-4":"Minutes",
+        "planstate-ul-li-5":"Seconds",
+        "free": "You can use our services in 1 devices, upgrade to our pricing plan, you can use in 3 devices",
+        "notfree": "You can use our services in 3 devices, and only 1 device online at the same time",
+        "service-h2": "Service Assurance",
+        "ul-li-1": "Servers in 182 countryies",
+        "ul-li-2": "Reliable Connection",
+        "ul-li-3": "Privacy Security",
+        "ul-li-4": "Reliable",
+        "plan-detail-ul-li-1": "24/7 customer support by live chat",
+        "plan-detail-ul-li-2": "Ultra-fast servers in 23 countries",
+        "plan-detail-ul-li-3": "Best-in-class security & encryption",
+        "plan-detail-ul-li-4": "No activity logs & no connection logs"
     }
 }
