@@ -64,6 +64,7 @@ export default {
     logOut() {
       this.$store.state.username= "";
       this.$store.commit('setToken','');
+      sessionStorage.removeItem("username");
       
       this.$router.push({
         path: '/login'

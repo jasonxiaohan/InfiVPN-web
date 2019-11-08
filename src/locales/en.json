@@ -109,6 +109,8 @@
         "h2": "My Services",
         "head-div": "-Private and secure internet access",
         "button": "Extend",
+        "status-active": "Active",
+        "status-fail": "Fail",
         "validity": "Validity",
         "totalamount": "Total Amount",
         "traffic": "Traffic",

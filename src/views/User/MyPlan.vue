@@ -4,10 +4,11 @@
       <h2>{{ this.$i18n.t("myplan.h2") }}</h2>
       <div class="gray-box plan">
         <div class="plan-head">
-          <b v-if="!isFree">3 Months VPN</b>
-          <b v-if="isFree">Free Experiences</b>
+          <b v-if="!isFree">{{accountInfo.name}}</b>
+          <b v-if="isFree">{{accountInfo.name}}</b>
           <div>{{ this.$i18n.t("myplan.head-div") }}</div>
-          <span class="status">Active</span>
+          <span class="status" v-if="status === 1">{{ this.$i18n.t("myplan.status-active") }}</span>
+          <span class="status" v-else>{{ this.$i18n.t("myplan.status-fail") }}</span>
           <el-button @click="goPage">{{ this.$i18n.t("myplan.button") }}</el-button>
         </div>
         <el-row :gutter="20" class="planState myplan">
@@ -17,8 +18,7 @@
                 2019.8.20 10:00:00-2019.12.20 10:00:00
               </el-form-item>
               <el-form-item v-bind:label="$t('myplan.totalamount')">
-                <div v-if="!isFree">$ 199.50</div>
-                <div v-if="isFree">$ 0</div>
+                <div>${{accountInfo.totalFee}}</div>
               </el-form-item>
               <el-form-item v-bind:label="$t('myplan.traffic')">
                 2.38 GB
@@ -115,20 +115,51 @@
 </template>
 
 <script>
+import rapid from 'eway-rapid'
 export default {
   name: 'Home',
   components: {},
   data() {
     return {
-      isFree: true
+      isFree: true,
+      accountInfo:[],
+      status: 0
     }
   },
-  mounted() {},
+  mounted() {
+    this.getAccountInfo();
+  },
   methods: {
     goPage() {
       this.$router.push({
         path: '/pricing'
       })
+    },
+    getUserName() {
+      if( this.$store.state.username!= "")
+        return this.$store.state.username;
+      return sessionStorage.username;      
+    },
+    // 获取用户信息
+    getAccountInfo(){                 
+       const that = this
+        this.$ajax({
+          method: "post",
+          url: this.$store.state.siteroot + "restful/vpn/getAccountInfo/"+that.$store.state.token,
+          params:{
+            "account": that.getUserName()
+          }
+        }).then(response => {
+          if (response.data.code === 0) {
+            that.accountInfo = response.data.data[0]       
+            that.status = response.data.data[0].status     
+          } else {
+             this.$message.warning({
+              message: response.data.msg,
+              showClose: true
+            });
+          }
+        });
     }
   }
 }

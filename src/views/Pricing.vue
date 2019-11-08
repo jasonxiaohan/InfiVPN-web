@@ -519,8 +519,35 @@ export default {
             });
           }
         });
+    },
+    payment(amount) {
+        var key = 'A1001CTYCxgwTHvadCWKyV9m/ixKCimCqN/cv5/2+SiU0iNc267zZAdNMpqUkizVY9tG7J',
+      password = 's4nydboX',
+      endpoint = 'sandbox';// Create the eWAY Client
+      var client = rapid.createClient(key, password, endpoint);
+      client.createTransaction(rapid.Enum.Method.RESPONSIVE_SHARED, {
+      "Payment": {
+      "TotalAmount": amount
+      },
+      // Change these to your server
+      "RedirectUrl": "http://www.eway.com.au",
+      "CancelUrl": "http://www.eway.com.au",
+      "TransactionType": "Purchase"
+      }).then(function(response){
+        if (response.getErrors().length == 0) {
+          var redirectURL = response.get('SharedPaymentUrl');
+          return redirectURL
+        } else {
+        response.getErrors().forEach(function(error) {
+          console.log("Response Messages: " + rapid.getMessage(error, "en"));
+        });
+        }
+      }).catch(function(reason){
+        reason.getErrors().forEach(function(error) {
+          console.log("Response Messages: " + rapid.getMessage(error, "en"));
+        });
+      })
     }
-
   }
 }
 

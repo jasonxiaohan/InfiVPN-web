@@ -14,6 +14,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import i18n from './locales'
+import rapid from 'eway-rapid'
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false
@@ -35,6 +36,7 @@ new Vue({
   store,
   axios,
   i18n,
+  rapid,
   components: { App },
   template: '<App/>'
 })

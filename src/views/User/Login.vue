@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import axios from '@/libs/api.request'
 export default {
   name: "Login",
   components: {},
@@ -28,7 +29,8 @@ export default {
       }
     };
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {
     doLogin() {
       if (this.loginForm.account === "" || this.loginForm.password === "") {
@@ -37,20 +39,14 @@ export default {
           showClose: true
         });
       } else {
-        // this.$store.state.login = 1
-        // this.$store.state.isShow = true
-        // this.$router.push({
-        //   path: '/myPlan'
-        // })
-
         const that = this
-        this.$ajax({
-          method: "post",
-          url: this.$store.state.siteroot + "restful/vpn/login",
-          params: {
+        axios.request({
+          url: 'restful/vpn/login',
+          data:{
             Account: that.loginForm.account,
             Password: that.loginForm.password
-          }
+          },
+          method: 'post'
         }).then(response => {
           if (response.data.code === 0) {
             const v = {
@@ -67,7 +63,8 @@ export default {
               showClose: true
             });
           }
-        });
+        })
+      
       }
     }
   }

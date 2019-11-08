@@ -17,8 +17,8 @@ export default {
    * @description api请求基础路径
    */
   baseUrl: {
-    dev: 'http://52.64.114.149:8080/',
-    pro: 'http://52.156.162.199:8080/restful/'
+    dev: 'http://3.1.238.2:8080/',
+    pro: 'http://3.1.238.2:8080/'
   },
   /**
    * @description 默认打开的首页的路由name值，默认为home

@@ -109,6 +109,8 @@
         "h2": "我的服务",
         "head-div": "-私人和安全的互联网访问",
         "button": "续费",
+        "status-active": "有效",
+        "status-fail": "失效",
         "validity": "有效期",
         "totalamount": "总金额",
         "traffic": "流量",
