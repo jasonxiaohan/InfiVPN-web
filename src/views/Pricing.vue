@@ -91,8 +91,8 @@
                 <div class="price-box" @click="checkedPlan(index,plan.id)" :class="{green:choicePlan==plan.id}">
                 <div class="head">{{ plan.name }}
                   <div class="zhekou">
-                    <img src="../assets/pricing/zhe.png" alt="">
-                    <span>Save <br> 46%</span>
+                    <!-- <img src="../assets/pricing/zhe.png" alt="">
+                    <span>Save <br> 46%</span> -->
                   </div>
                 </div>
                 <div class="subTit">Most Popular</div>
@@ -276,7 +276,7 @@
           </el-row>
         </div>
         <el-button class="black join" v-if="this.$store.state.token == ''" @click="join">{{this.$i18n.t("pricing.button")}}</el-button>
-        <el-button class="black join" v-if="this.$store.state.token !==false" @click="renew">{{this.$i18n.t("pricing.button-renew")}}</el-button>
+        <el-button class="black join" v-else @click="renew">{{this.$i18n.t("pricing.button-renew")}}</el-button>
         <div class="rules">{{this.$i18n.t("pricing.form-label")}}
           <a @click="openDialog(2)">{{this.$i18n.t("pricing.service")}}</a>
         </div>
@@ -473,7 +473,8 @@ export default {
           url: this.$store.state.siteroot + "restful/vpn/addUser",
           params: {
             emailAddress: that.regForm.email.trim(),
-            password: that.regForm.password.trim()
+            password: that.regForm.password.trim(),
+            expireTime: '1w'
           }
         }).then(response => {
           if (response.data.code === 0) {

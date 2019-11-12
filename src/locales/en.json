@@ -25,9 +25,11 @@
         "ul-li-1": "Security",
         "ul-li-2": "Freedom",
         "ul-li-3": "Private",
-        "button": "Get InfiVPN now",
+        "button": "Get EasyVPN now",
+        "ad-title": "Be hurry to Extend your plan",
+        "ad-text": "Your private and secure internet is losing, go extend now",
         "h3": "Enjoy unrestricted access worldwide",
-        "div-content": "InfiVPN defeats content restrictions and censorship to deliver unlimited access to video, music, social media, and more, from anywhere in the world.",
+        "div-content": "EasyVPN defeats content restrictions and censorship to deliver unlimited access to video, music, social media, and more, from anywhere in the world.",
         "el-row2-h3": "Protect all your devices",
         "el-row2-content": "Do you use Windows at work, macOS at home, and Linux for your special projects? No problem. There’s a NordVPN application for each of these, plus apps for iOS, Android, and Android TV. Oh, and also encrypted proxy extensions for Chrome and Firefox. Best of all, with one NordVPN account, you can secure up to 6 devices at the same time.",
         "el-row2-support": "Available on:",
@@ -38,7 +40,8 @@
         "service-li1": "Refund In 30 Days",
         "service-li2": "Reliable Connection",
         "service-li3": "Privacy Security",
-        "service-li4": "Reliable"
+        "service-li4": "Reliable",
+        "dialog-content-button": "Get Extend"
     },
     "login": {
         "title": "Login",
@@ -46,7 +49,16 @@
         "password": "Password",
         "button": "Login",
         "forgotLabel": "Forgot Password?",
+        "createLabel": "Create an account",
         "message": "Please check the account/password!"
+    },
+    "register": {
+        "title": "Register",
+        "account": "Account",
+        "password": "Password",
+        "confirmpassword": "Password Confirmation",
+        "button": "Register",
+        "message": "Registration is successful,please login"
     },
     "changepassword": {
         "title": "Change Password",
@@ -66,7 +78,7 @@
         "h2": "Invite friends to join EasyVPN, get more free time",
         "url": "My invitation url",
         "intro-1":"Copy the invitation url and share to your friends",
-        "intro-2":"Your friends join in InfiVPN and buy a pricing plan(except the free experiences)",
+        "intro-2":"Your friends join in EasyVPN and buy a pricing plan(except the free experiences)",
         "intro-3":"Every 5 friends completed the steps above, you will get more 1 month for free",
         "invitation": "My Invitation",
         "invited": "friends invited",
@@ -86,7 +98,11 @@
         "password": "New Password",
         "confirmpassword": "Password Confirmation",
         "button": "Submit",
-        "login": "Login Now"
+        "login": "Login Now",
+        "email-message": "Please enter your account",
+        "code-message": "Please enter verification code",
+        "code-send-message": "Verification code sent",
+        "success": "Password reset complete"
     },
     "pricing":{
         "h2": "All the settlement include:",

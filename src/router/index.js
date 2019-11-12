@@ -8,6 +8,7 @@ import MyPlan from './../views/User/MyPlan.vue'
 import Referral from './../views/User/Referral.vue'
 import Apps from './../views/Apps.vue'
 import Pricing from './../views/Pricing.vue'
+import Register from './../views/User/Register.vue'
 import { setToken, getToken, canTurnTo, setTitle } from '@/libs/util'
 
 Vue.use(Router)
@@ -60,6 +61,11 @@ const router = new Router({
       path: '/forgotPassword',
       name: 'forgotPassword',
       component: ForgotPassword
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
     },
     {
       path: '/referral',

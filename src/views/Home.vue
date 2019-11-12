@@ -97,7 +97,7 @@
       <div class="header">
         <div class="title">
           <img class="" src="../assets/dialog/clock.png" alt="">
-          Be hurry to Extend your plan
+          {{this.$i18n.t("home.ad-title")}}
         </div>
         <img class="close" @click="close" src="../assets/dialog/close.png" alt="">
       </div>
@@ -106,46 +106,46 @@
         <el-row :gutter="20" class="planState">
           <el-col :span="16" class="left">
             <img src="../assets/dialog/logo_black.png" alt="" class="logo">
-            <div class="text">Your private and secure internet is losing, go extend now</div>
+            <div class="text">{{this.$i18n.t("home.ad-text")}}</div>
             <ul class="leftTime">
               <li>
                 <div>6</div>
-                Months
+                {{this.$i18n.t("myplan.planstate-ul-li-1")}}
               </li>
               <li>
                 <div>6</div>
-                Days
+                {{this.$i18n.t("myplan.planstate-ul-li-2")}}
               </li>
               <li>
                 <div>23</div>
-                Hours
+                {{this.$i18n.t("myplan.planstate-ul-li-3")}}
               </li>
               <li>
                 <div>59</div>
-                Minutes
+                {{this.$i18n.t("myplan.planstate-ul-li-4")}}
               </li>
               <li>
                 <div>59</div>
-                Seconds
+                {{this.$i18n.t("myplan.planstate-ul-li-5")}}
               </li>
             </ul>
           </el-col>
           <el-col :span="8" class="right">
             <ul>
               <li>
-                <img src="../assets/account/ok.png" alt="">24/7 customer support by live chat
+                <img src="../assets/account/ok.png" alt="">{{this.$i18n.t("myplan.plan-detail-ul-li-1")}}
               </li>
               <li>
-                <img src="../assets/account/ok.png" alt="">Ultra-fast servers in 23 countries
+                <img src="../assets/account/ok.png" alt="">{{this.$i18n.t("myplan.plan-detail-ul-li-2")}}
               </li>
               <li>
-                <img src="../assets/account/ok.png" alt="">Best-in-class security & encryption
+                <img src="../assets/account/ok.png" alt="">{{this.$i18n.t("myplan.plan-detail-ul-li-3")}}
               </li>
               <li>
-                <img src="../assets/account/ok.png" alt="">No activity logs & no connection logs
+                <img src="../assets/account/ok.png" alt="">{{this.$i18n.t("myplan.plan-detail-ul-li-4")}}
               </li>
             </ul>
-              <el-button @click="extend">Get Extend</el-button>
+              <el-button @click="extend">{{this.$i18n.t("home.dialog-content-button")}}</el-button>
           </el-col>
         </el-row>
       </div>
@@ -169,8 +169,8 @@ export default {
   },
   methods: {
     open() {
-      if(this.$store.state.token === false) {
-        this.$router.push({path:'/login'});
+      if(this.$store.state.token =="") {
+        this.$router.push({path:'/pricing'});
         return;
       }
       this.dialogVisible = true

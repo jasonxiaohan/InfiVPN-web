@@ -97,7 +97,7 @@ export default {
       array: [{
         name: 'app1',
         title: 'Android',
-        subTit: 'Download InfiVPN',
+        subTit: 'Download EasyVPN',
         icon: tab1,
         face: face1,
         type: 'Android',
@@ -107,7 +107,7 @@ export default {
       }, {
         name: 'app2',
         title: 'Windows',
-        subTit: 'Download InfiVPN',
+        subTit: 'Download EasyVPN',
         icon: tab2,
         face: face2,
         type: 'Windows',
@@ -116,28 +116,28 @@ export default {
       }, {
         name: 'app3',
         title: 'macOS',
-        subTit: 'Download InfiVPN',
+        subTit: 'Download EasyVPN',
         icon: tab3,
         face: face3,
         type: 'Mac',
         text: '( macOS Yosemite 10.10 or later; macOS Sierra 10.12 or later )',
         url1: 'http://baidu.com',
-        url1Text: 'Download InfiVPN',
+        url1Text: 'Download EasyVPN',
         urlIos: 'http://baidu.com'
       }, {
         name: 'app4',
         title: 'iOS | iPhone | iPad',
-        subTit: 'Download InfiVPN',
+        subTit: 'Download EasyVPN',
         icon: tab4,
         face: face4,
         type: 'iOS',
         url1: 'http://baidu.com',
-        url1Text: 'Download InfiVPN',
+        url1Text: 'Download EasyVPN',
         urlIos: 'http://baidu.com'
       }, {
         name: 'app5',
         title: 'Android TV',
-        subTit: 'Download InfiVPN',
+        subTit: 'Download EasyVPN',
         icon: tab5,
         face: face5,
         type: 'Android TV',
@@ -145,7 +145,7 @@ export default {
       }, {
         name: 'app6',
         title: 'Linux',
-        subTit: 'Download InfiVPN',
+        subTit: 'Download EasyVPN',
         icon: tab6,
         face: face6,
         type: 'Linux',
@@ -156,7 +156,7 @@ export default {
       }, {
         name: 'app7',
         title: 'Chrome',
-        subTit: 'Add InfiVPN',
+        subTit: 'Add EasyVPN',
         icon: tab7,
         face: face7,
         extension: 'Chrome',
@@ -165,7 +165,7 @@ export default {
       }, {
         name: 'app8',
         title: 'Firefox',
-        subTit: 'Add InfiVPN',
+        subTit: 'Add EasyVPN',
         icon: tab8,
         face: face8,
         extension: 'Firefox',

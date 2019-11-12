@@ -138,10 +138,17 @@ export default {
     getUserName() {
       if( this.$store.state.username!= "")
         return this.$store.state.username;
+        if(sessionStorage.username != "") {
+         this.$store.commit('setToken',''); 
+         this.$router.push({
+            path: '/login'
+          }) 
+          return;
+        }
       return sessionStorage.username;      
     },
     // 获取用户信息
-    getAccountInfo(){                 
+    getAccountInfo(){                        
        const that = this
         this.$ajax({
           method: "post",

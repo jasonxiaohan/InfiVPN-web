@@ -25,11 +25,13 @@
         "ul-li-1": "安全",
         "ul-li-2": "自由",
         "ul-li-3": "私有",
-        "button": "立即获取InfiVPN",
+        "button": "立即获取EasyVPN",
+        "ad-title": "快速扩展您的计划",
+        "ad-text": "您的私人安全互联网正在丢失，请立即扩展",
         "h3": "畅享全球无限制的访问",
-        "div-content": "InfiVPN克服了内容限制和审查制度，可从世界任何地方无限访问视频，音乐，社交媒体等。",
+        "div-content": "EasyVPN克服了内容限制和审查制度，可从世界任何地方无限访问视频，音乐，社交媒体等。",
         "el-row2-h3": "保护您的所有设备",
-        "el-row2-content": "您是否在工作中使用Windows，在家中使用macOS以及在特殊项目中使用Linux？ 没问题。 每个都有一个InfiVPN应用程序，以及适用于iOS，Android和Android TV的应用程序。 哦，还有用于Chrome和Firefox的加密代理扩展。 最重要的是，使用一个InfiVPN帐户，您可以同时保护多达6台设备。",
+        "el-row2-content": "您是否在工作中使用Windows，在家中使用macOS以及在特殊项目中使用Linux？ 没问题。 每个都有一个EasyVPN应用程序，以及适用于iOS，Android和Android TV的应用程序。 哦，还有用于Chrome和Firefox的加密代理扩展。 最重要的是，使用一个EasyVPN帐户，您可以同时保护多达6台设备。",
         "el-row2-support": "适用于:",
         "el-row2-button": "检查所有设备",
         "el-row3-h3":"随时随地享受快速稳定的连接",
@@ -38,7 +40,8 @@
         "service-li1": "30天内退款",
         "service-li2": "可靠的连接",
         "service-li3": "隐私与安全",
-        "service-li4": "可靠"
+        "service-li4": "可靠",
+        "dialog-content-button": "扩充"
     },
     "login": {
         "title": "登录",
@@ -46,7 +49,16 @@
         "password": "密码",
         "button": "登录",
         "forgotLabel": "忘记密码?",
+        "createLabel": "注册",
         "message": "请检查账号/密码!"
+    },
+    "register": {
+        "title": "注册",
+        "account": "帐号",
+        "password": "密码",
+        "confirmpassword": "确认密码",
+        "button": "注册",
+        "message": "注册成功，请登录"
     },
     "changepassword": {
         "title": "更改密码",
@@ -86,7 +98,11 @@
         "password": "新密码",
         "confirmpassword": "确认密码",
         "button": "提交",
-        "login": "去登录"
+        "login": "去登录",
+        "email-message": "请输入帐号",
+        "code-message": "请输入验证码",
+        "code-send-message": "验证码已发送",
+        "success": "密码修改成功"
     },
     "pricing":{
         "h2": "所有结算包括:",
