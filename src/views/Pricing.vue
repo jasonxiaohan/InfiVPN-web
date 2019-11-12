@@ -513,6 +513,15 @@ export default {
             that.listPlans = response.data.data
             this.currentPlan = response.data.data[1]
           } else {            
+            if(response.data.msg == 'invalid token') {
+              this.$store.commit('setToken','');
+              sessionStorage.removeItem("username");
+                
+              this.$router.push({
+                path: '/login'
+              })
+              return
+            } 
             this.$message.warning({
               message: response.data.msg,
               showClose: true

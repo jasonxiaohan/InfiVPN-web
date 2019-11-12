@@ -6,6 +6,7 @@ import '../static/js/flexible.min.js'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/index.scss' // global css
 import '@/styles/custom.scss' // 自定义 css
+import 'vue-social-share/dist/client.css'
 import Vue from 'vue'
 import App from './App.vue'
 import Vuex from 'vuex'
@@ -15,10 +16,12 @@ import store from './store'
 import axios from 'axios'
 import i18n from './locales'
 import rapid from 'eway-rapid'
+import share from 'vue-social-share'
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 Vue.use(Vuex)
+Vue.use(share)
 
 Vue.prototype.$store = store
 Vue.prototype.$ajax = axios

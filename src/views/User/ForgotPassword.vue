@@ -3,11 +3,13 @@
     <h2>{{this.$i18n.t("forgotpassword.title")}}</h2>
     <el-form class="loginForm" label-position="top" label-width="80px" :model="loginForm">
       <el-form-item v-bind:label="$t('forgotpassword.account')">
-        <el-input v-model="loginForm.email"></el-input>
+        <el-input v-model="loginForm.email">
+          <el-button slot="append">{{this.$i18n.t("forgotpassword.send")}}</el-button>
+        </el-input>
       </el-form-item>
       <el-form-item v-bind:label="$t('forgotpassword.verifiaccount')">
         <el-input v-model="loginForm.code" class="code">
-          <el-button slot="append">{{this.$i18n.t("forgotpassword.send")}}</el-button>
+          <!-- <el-button slot="append">{{this.$i18n.t("forgotpassword.send")}}</el-button> -->
         </el-input>
       </el-form-item>
       <el-form-item v-bind:label="$t('forgotpassword.password')">

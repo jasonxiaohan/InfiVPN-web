@@ -154,6 +154,15 @@ export default {
             that.accountInfo = response.data.data[0]       
             that.status = response.data.data[0].status     
           } else {
+            if(response.data.msg == 'invalid token') {
+              this.$store.commit('setToken','');
+              sessionStorage.removeItem("username");
+                
+              this.$router.push({
+                path: '/login'
+              })
+              return
+            }            
              this.$message.warning({
               message: response.data.msg,
               showClose: true

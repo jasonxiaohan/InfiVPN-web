@@ -51,9 +51,10 @@ export default {
       })
     },
     isShow() {
-      if (this.$store.state.token) {
+      if (this.$store.state.token && sessionStorage.username!= "") {
         return true
       }
+      this.$store.commit('setToken','');
       return false
     },
     getUserInfo() {

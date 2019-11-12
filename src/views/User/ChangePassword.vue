@@ -34,6 +34,11 @@ export default {
   },
   mounted() {},
   methods: {
+    getUserName() {
+      if( this.$store.state.username!= "")
+        return this.$store.state.username;
+      return sessionStorage.username;      
+    },
     doSubmit() {
         if(this.$store.state.token === false) {
            this.$message.warning({
@@ -83,16 +88,26 @@ export default {
         const that = this
         this.$ajax({
           method: "post",
-          url: this.$store.state.siteroot + "restful/vpn/newPassword/"+that.$store.state.token,
+          url: this.$store.state.siteroot + "restful/vpn/changePasswd/"+that.$store.state.token,
           params: {
-            password1: that.loginForm.oldPassword.trim(),
-            password2: that.loginForm.newPassword.trim(),
+            account: that.getUserName(),
+            oldPwd: that.loginForm.oldPassword.trim(),
+            newPwd: that.loginForm.newPassword.trim(),
           }
         }).then(response => {
           if (response.data.code === 0) {           
             that.$store.commit('setToken', response.data.data.token)            
             that.$router.push("/myPlan");
           } else {
+            if(response.data.msg == 'invalid token') {
+              this.$store.commit('setToken','');
+              sessionStorage.removeItem("username");
+                
+              this.$router.push({
+                path: '/login'
+              })
+              return
+            } 
             this.$message.warning({
               message: response.data.msg,
               showClose: true

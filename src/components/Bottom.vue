@@ -1,14 +1,14 @@
 <template>
   <div class="page-bottom">
     <el-row :gutter="20">
-      <el-col :xs="24" :sm="6" :md="5" :lg="5" :xl="5">
+      <el-col :xs="24" :sm="24" :md="3" :lg="3" :xl="3">
         <ul>
           <li>
             <img class="logo" src="../assets/bottom/logo_bottom.png" alt="">
           </li>
         </ul>
       </el-col>
-      <el-col :sm="4" :md="4" :lg="4" :xl="4">
+      <el-col :xs="8" :sm="6" :md="5" :lg="5" :xl="5">
         <ul>
           <language/>
         </ul>
@@ -43,7 +43,7 @@
           </li>
         </ul>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6">
+      <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="4">
         <ul class="center">
           <li class="title">{{this.$i18n.t("bottom.bottom-9")}}</li>
           <li>

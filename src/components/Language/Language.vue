@@ -1,8 +1,13 @@
 <template>
   <div>    
-    <select trigger="click" v-model="selected" @change="selectLang">
-      <option v-for="(value, key) in localList" :name="key" :key="`lang-${key}`" :value="key">{{value}}</option>
-    </select><br>
+     <el-select v-model="selected" :placeholder="translation()" @change="selectLang">
+        <el-option
+          v-for="item in localList"
+          :key="item.value"
+          :label="item.label"
+          :value="item.label">
+        </el-option>
+      </el-select>
   </div>
 </template>
 
@@ -14,15 +19,27 @@ export default {
   },
   data () {
     return {
-      langList: {
-        'zh-CN': '语言',
-        'en-US': 'Lang'
+      langList: [
+        {
+          value: 'zh',
+          label: '翻译'
+        },
+        {
+          value: 'en',
+          label: 'Translation'
+        }
+      ],
+      localList: [{
+        value: 'zh',
+        label: '中文简体'
       },
-      localList: {
-        'zh': '中文简体',
-        'en': 'English'
-      },
-      selected: ''
+      {
+        value: 'en',
+        label: 'English'
+      }
+      ],
+      selected: '',
+      value:''
     }
   },
   watch: {
@@ -30,18 +47,39 @@ export default {
       this.$i18n.locale = lang
     }    
   },
+  mounted() {
+    // this.translation()
+  },
   computed: {
-    title () {
-      return this.langList[this.lang]
-    },    
+    
   },
   created() {
-    this.selected = i18n.locale
+    let obj = {};
+    obj = this.localList.find((item)=>{
+          return item.value === i18n.locale;
+    });
+    // this.selected = obj.label
   },
   methods: {
-    selectLang () {
-      i18n.locale = this.selected
-      localStorage.setItem('localeLanguage',this.selected);
+    selectLang (val) {
+      let obj = {};
+      obj = this.localList.find((item)=>{
+          return item.label === val;
+      });
+      i18n.locale = obj.value
+      localStorage.setItem('localeLanguage',obj.value);
+    },
+    translation() {
+      let val = localStorage.localeLanguage
+      let obj = {}
+      
+      obj = this.langList.find((item) => {
+        return item.value === val;
+      });
+      if(obj) {
+        return obj.label
+      }
+      return "翻译"
     }
   }
 }

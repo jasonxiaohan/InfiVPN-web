@@ -246,6 +246,19 @@
         }
     }
 
+    .el-footer{
+        .el-select{
+          .el-input__inner{
+            background: none;
+            color: inherit;
+            border-color:#DCDFE6;
+            &:focus{
+              border-color:#DCDFE6;
+            }
+          }
+        }
+      }
+
     .extendDialog {}
 
     .el-form {

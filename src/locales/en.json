@@ -70,13 +70,19 @@
         "intro-3":"Every 5 friends completed the steps above, you will get more 1 month for free",
         "invitation": "My Invitation",
         "invited": "friends invited",
-        "rewards":"My Rewards"
+        "rewards":"My Rewards",
+        "rewards-h3": "months got",
+        "invitation-account": "Account",
+        "invitation-plan": "plan",
+        "invitation-time":"Register Time",
+        "rewards-extends": "Extends",
+        "rewards-time": "Time"
     },
     "forgotpassword":{
         "title": "Forgot Password",
         "account": "Email",
-        "verifiaccount": "Email Verification",
-        "send": "Send",
+        "verifiaccount": "Please enter verification code",
+        "send": "Send code",
         "password": "New Password",
         "confirmpassword": "Password Confirmation",
         "button": "Submit",
