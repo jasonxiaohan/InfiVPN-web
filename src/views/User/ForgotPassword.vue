@@ -129,6 +129,7 @@ export default {
               message: i18n.t("forgotpassword.success"),
               showClose: true
             }); 
+            this.$router.push("/login");
           } else {
             this.$message.warning({
               message: response.data.msg,

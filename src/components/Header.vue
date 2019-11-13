@@ -1,8 +1,10 @@
 <template>
   <div>
     <div class="page-header">
-      <a @click="goPage('/')" class="logo"><img src="../assets/logo.png" alt="EasyVPN"></a>
+      <a @click="goPage('/')" class="logo"><img src="../assets/logo.png" alt="EasyVPN"></a>      
+      
       <el-menu class="el-menu" mode="horizontal">
+        <el-menu-item>The website is under construction and will be released in December</el-menu-item>
         <el-menu-item index="1" @click="goPage('/pricing')">{{this.$i18n.t("header.pricing")}}</el-menu-item>
         <el-menu-item index="2" @click="goPage('/apps')">{{this.$i18n.t("header.apps")}}<img src="../assets/home/download.png"></el-menu-item>
         <el-menu-item v-if="isShow() === false" index="3" @click="goPage('/login')">{{this.$i18n.t("header.account")}}</el-menu-item>

@@ -96,7 +96,13 @@ export default {
           }
         }).then(response => {
           if (response.data.code === 0) {           
-            that.$store.commit('setToken', response.data.data.token)            
+            if(response.data.data.token != undefined) {
+              that.$store.commit('setToken', response.data.data.token)            
+            }
+            that.$message.success({
+               message: that.$i18n.t("changepassword.success"),
+               showClose: true
+            })
             that.$router.push("/myPlan");
           } else {
             if(response.data.msg == 'invalid token') {

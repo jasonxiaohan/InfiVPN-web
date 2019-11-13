@@ -14,8 +14,12 @@
     </el-form>
     <router-link to="/forgotPassword">{{this.$i18n.t("login.forgotLabel")}}</router-link>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <template v-if="this.language() === true">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </template>
+           
     <router-link to="/register">{{this.$i18n.t("login.createLabel")}}</router-link>
   </div>
 </template>
@@ -36,6 +40,12 @@ export default {
   mounted() {
   },
   methods: {
+    language() {
+      if(localStorage.localeLanguage == "en") {
+        return false
+      } 
+      return true
+    },
     doLogin() {
       if (this.loginForm.account === "" || this.loginForm.password === "") {
         this.$message.warning({

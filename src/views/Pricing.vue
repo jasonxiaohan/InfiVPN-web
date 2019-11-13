@@ -97,9 +97,9 @@
                 </div>
                 <div class="subTit">Most Popular</div>
                 <div class="body">
-                  <div class="price-old">${{ plan.totalFee }}/{{ plan.span }}</div>
+                  <div class="price-old">${{ (plan.totalFee).toFixed(2) }}/{{ plan.span }}</div>
                   <div class="price-now">
-                    $ <b>{{ plan.actualFee }}</b> /{{plan.span}}
+                    $ <b>{{ (plan.actualFee).toFixed(2) }}</b> /{{plan.span}}
                   </div>
                   <div class="time">Save ${{(plan.totalFee-plan.actualFee).toFixed(2)}}</div>
                   <div class="dec"><span>${{plan.totalFee}}</span> ${{ plan.actualFee }} for {{plan.name}}</div>
@@ -113,9 +113,9 @@
               <div class="price-box" @click="checkedPlan(index, plan.id)" :class="{green:choicePlan==plan.id}">
                 <div class="head">{{ plan.name }}</div>
                 <div class="body">
-                  <div class="price-old">${{plan.totalFee}}/{{ plan.span }}</div>
+                  <div class="price-old">${{(plan.totalFee).toFixed(2)}}/{{ plan.span }}</div>
                   <div class="price-now">
-                    $ <b>{{ plan.actualFee }}</b> /{{plan.span}}
+                    $ <b>{{ (plan.actualFee).toFixed(2) }}</b> /{{plan.span}}
                   </div>
                   <div class="time">Save ${{(plan.totalFee-plan.actualFee).toFixed(2)}}</div>
                   <div class="dec"><span>${{plan.totalFee}}</span> ${{ plan.actualFee }} for {{plan.name}}</div>
@@ -164,7 +164,7 @@
             <div class="imgs">
               <img src="../assets/pricing/pay1.png" alt="">
               <img src="../assets/pricing/pay2.png" alt="">
-              <img src="../assets/pricing/pay3.png" alt="">
+              <!-- <img src="../assets/pricing/pay3.png" alt=""> -->
             </div>
           </el-radio>
           <el-radio v-model="payType" label="2" border>Paypal
@@ -181,7 +181,7 @@
                 <div class="imgs">
                   <img src="../assets/pricing/pay1.png" alt="">
                   <img src="../assets/pricing/pay2.png" alt="">
-                  <img src="../assets/pricing/pay3.png" alt="">
+                  <!-- <img src="../assets/pricing/pay3.png" alt=""> -->
                 </div>
               </div>
               <ul class="order-detail">
@@ -199,7 +199,7 @@
                 </li>
                 <li>
                   <div>Total</div>
-                  <div>${{currentPlan.actualFee}}</div>
+                  <div>${{(currentPlan.actualFee).toFixed(2)}}</div>
                 </li>
               </ul>
               <el-form class="cardForm" label-position="top" :inline="true">
@@ -248,10 +248,10 @@
               <div class="autoPay">
                 <el-radio v-model="autopay" label="1">Automatic Payment</el-radio>
                 <div class="content">
-                  Automatic Payment info Automatic Payment info Automatic Payment info Automatic Payment info Automatic
+                  <!-- Automatic Payment info Automatic Payment info Automatic Payment info Automatic Payment info Automatic
                   Payment info Automatic Payment info Automatic Payment info Automatic Payment info Automatic Payment
-                  info Automatic Payment info Automatic Payment info Automatic Payment info... <a
-                  @click="openDialog(1)">Details
+                  info Automatic Payment info Automatic Payment info Automatic Payment info...  -->
+                  <a @click="openDialog(1)">Details
                   ></a>
                 </div>
               </div>
