@@ -3,20 +3,20 @@
     <h2>{{this.$i18n.t("forgotpassword.title")}}</h2>
     <el-form class="loginForm" label-position="top" label-width="80px" :model="loginForm">
       <el-form-item v-bind:label="$t('forgotpassword.account')">
-        <el-input v-model="loginForm.email">
+        <el-input v-model="loginForm.email" :placeholder="$t('forgotpassword.account-msg1')">
           <el-button @click="sendCode" slot="append">{{this.$i18n.t("forgotpassword.send")}}</el-button>
         </el-input>
       </el-form-item>
       <el-form-item v-bind:label="$t('forgotpassword.verifiaccount')">
-        <el-input v-model="loginForm.code" class="code">
+        <el-input v-model="loginForm.code" class="code" :placeholder="$t('forgotpassword.verifiaccount-msg')">
           <!-- <el-button slot="append">{{this.$i18n.t("forgotpassword.send")}}</el-button> -->
         </el-input>
       </el-form-item>
       <el-form-item v-bind:label="$t('forgotpassword.password')">
-        <el-input type="password" v-model="loginForm.newPassword" show-password></el-input>
+        <el-input type="password" v-model="loginForm.newPassword" show-password :placeholder="$t('forgotpassword.password-msg')"></el-input>
       </el-form-item>
       <el-form-item v-bind:label="$t('forgotpassword.confirmpassword')">
-        <el-input type="password" v-model="loginForm.confirmPassword" show-password></el-input>
+        <el-input type="password" v-model="loginForm.confirmPassword" show-password :placeholder="$t('forgotpassword.confirmpassword')"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button @click="doSubmit">{{this.$i18n.t("forgotpassword.button")}}</el-button>
@@ -58,6 +58,13 @@ export default {
       }
       
       if(step === 2) {
+        if(this.loginForm.email.trim() == "") {
+          this.$message.warning({
+            message: i18n.t("forgotpassword.email-message"),
+            showClose: true
+          })
+          return false
+        }
         // 检查验证码 
         if(this.loginForm.code.trim() == "") {
           this.$message.warning({

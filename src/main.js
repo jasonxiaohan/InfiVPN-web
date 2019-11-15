@@ -17,6 +17,7 @@ import axios from 'axios'
 import i18n from './locales'
 import rapid from 'eway-rapid'
 import share from 'vue-social-share'
+import Router from 'vue-router'
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false
@@ -31,6 +32,12 @@ window.i18n = i18n
 Vue.use(iView, {
   i18n: (key, value) => i18n.t(key, value)
 })
+
+// vue-router点击菜单栏同一个模块报错： Uncaught (in promise) 
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 
 /* eslint-disable no-new */
 new Vue({

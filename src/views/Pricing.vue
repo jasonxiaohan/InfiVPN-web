@@ -102,7 +102,7 @@
                     $ <b>{{ (plan.actualFee).toFixed(2) }}</b> /{{plan.span}}
                   </div>
                   <div class="time">Save ${{(plan.totalFee-plan.actualFee).toFixed(2)}}</div>
-                  <div class="dec"><span>${{plan.totalFee}}</span> ${{ plan.actualFee }} for {{plan.name}}</div>
+                  <div class="dec"><span>${{plan.totalFee}}</span> ${{ (plan.actualFee).toFixed(2) }} for {{plan.name}}</div>
                 </div>
               </div>
               <div class="my-plan">
@@ -118,7 +118,7 @@
                     $ <b>{{ (plan.actualFee).toFixed(2) }}</b> /{{plan.span}}
                   </div>
                   <div class="time">Save ${{(plan.totalFee-plan.actualFee).toFixed(2)}}</div>
-                  <div class="dec"><span>${{plan.totalFee}}</span> ${{ plan.actualFee }} for {{plan.name}}</div>
+                  <div class="dec"><span>${{plan.totalFee}}</span> ${{ (plan.actualFee).toFixed(2) }} for {{plan.name}}</div>
                 </div>
               </div>
               <div class="my-plan">
@@ -140,7 +140,7 @@
         </div>
         <el-form class="regForm" :model="regForm" ref="regForm" label-position="top" :inline="true">
           <el-form-item v-bind:label="$t('pricing.email')">
-            <el-input :placeholder="$t('pricing.email-label')" v-model="regForm.email"></el-input>
+            <el-input :placeholder="$t('register.email-msg2')" v-model="regForm.email"></el-input>
           </el-form-item>
           <el-form-item v-bind:label="$t('pricing.password')">
             <el-input type="password" :placeholder="$t('pricing.password-label')" v-model="regForm.password" show-password></el-input>
@@ -160,7 +160,8 @@
       </div>
       <div class="block-payment" v-if="!ifFree">
         <div class="pay-type">
-          <el-radio v-model="payType" label="1" border>Credit Card
+          <el-radio-group v-model="payType">
+          <el-radio v-model="payType" label="1" border>{{this.$i18n.t("pricing.credit-card")}}
             <div class="imgs">
               <img src="../assets/pricing/pay1.png" alt="">
               <img src="../assets/pricing/pay2.png" alt="">
@@ -172,86 +173,94 @@
               <img src="../assets/pricing/pay4.png" alt="">
             </div>
           </el-radio>
+          </el-radio-group>
         </div>
         <div class="pay-info">
           <el-row :gutter="20">
             <el-col :span="18" class="card-info">
-              <div class="head">
-                Credit Card
-                <div class="imgs">
-                  <img src="../assets/pricing/pay1.png" alt="">
-                  <img src="../assets/pricing/pay2.png" alt="">
-                  <!-- <img src="../assets/pricing/pay3.png" alt=""> -->
-                </div>
+              <div class="head">                
+                <template v-if="payType == 1">
+                  {{this.$i18n.t("pricing.credit-card")}}
+                  <div class="imgs">
+                    <img src="../assets/pricing/pay1.png" alt="">
+                    <img src="../assets/pricing/pay2.png" alt="">
+                    <!-- <img src="../assets/pricing/pay3.png" alt=""> -->
+                  </div>
+                </template>
+                <template v-if="payType == 2">
+                  Paypal
+                  <div class="imgs">
+                    <img src="../assets/pricing/pay4.png" alt="">
+                  </div>
+                </template>
               </div>
               <ul class="order-detail">
                 <li>
-                  <div>EasyVPN {{currentPlan.name}}</div>
-                  <div>${{currentPlan.actualFee}}</div>
+                  <div>{{currentPlan.name}}</div>
+                  <div>${{(currentPlan.actualFee).toFixed(2)}}</div>
                 </li>
                 <li>
-                  <div>Discount</div>
-                  <div>-${{currentPlan.discount}}</div>
+                  <div>{{this.$i18n.t("pricing.discount")}}</div>
+                  <div>${{currentPlan.discount}}</div>
                 </li>
                 <li>
-                  <div>VAT</div>
+                  <div>{{this.$i18n.t("pricing.vat")}}</div>
                   <div>$0.0</div>
                 </li>
                 <li>
-                  <div>Total</div>
+                  <div>{{this.$i18n.t("pricing.total")}}</div>
                   <div>${{(currentPlan.actualFee).toFixed(2)}}</div>
                 </li>
               </ul>
               <el-form class="cardForm" label-position="top" :inline="true">
                 <el-row :gutter="20">
                   <el-col :span="12">
-                    <el-form-item label="First Name">
-                      <el-input placeholder=""></el-input>
+                    <el-form-item v-bind:label="$t('pricing.first-name')">
+                      <el-input placeholder="" v-model="paymentForm.firstName"></el-input>
                     </el-form-item>
                   </el-col>
                   <el-col :span="12">
-                    <el-form-item label="Last Name">
-                      <el-input placeholder=""></el-input>
+                    <el-form-item v-bind:label="$t('pricing.last-name')">
+                      <el-input placeholder="" v-model="paymentForm.lastName"></el-input>
                     </el-form-item>
                   </el-col>
                   <el-col :span="24">
-                    <el-form-item label="Credit card number">
-                      <el-input placeholder=""></el-input>
+                    <el-form-item v-bind:label="$t('pricing.card-number')">
+                      <el-input placeholder="" v-model="paymentForm.cardNumber"></el-input>
                     </el-form-item>
                   </el-col>
                   <el-col :span="12">
-                    <el-form-item label="Expiry Date">
-                      <el-select v-model="value1" placeholder="Month">
-                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-                        </el-option>
-                      </el-select>
-                      <el-select v-model="value2" placeholder="Day" class="ml-20">
-                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-                        </el-option>
-                      </el-select>
+                    <el-form-item v-bind:label="$t('pricing.expiry-date')">
+                      <div class="block">
+                          <el-date-picker
+                            v-model="paymentForm.expiryDate"
+                            type="date"
+                            :placeholder="$t('pricing.select-date')">
+                          </el-date-picker>
+                        </div>                   
                     </el-form-item>
-                  </el-col>
+                  </el-col>                  
                   <el-col :span="12">
                     <el-form-item>
-                      <label class="cw">CW<img src="../assets/pricing/help.png" alt=""></label>
-                      <el-input placeholder=""></el-input>
+                      <label class="cw">CVV<img src="../assets/pricing/help.png" alt=""></label>
+                      <el-input placeholder="" v-model="paymentForm.cvv"></el-input>
                     </el-form-item>
                   </el-col>
 
                   <el-col :span="24">
                     <el-form-item label="" class="rem">
-                      <el-checkbox v-model="remember">Remember the payment info</el-checkbox>
+                      <el-checkbox v-model="remember">{{this.$i18n.t("pricing.remember")}}</el-checkbox>
                     </el-form-item>
                   </el-col>
                 </el-row>
               </el-form>
               <div class="autoPay">
-                <el-radio v-model="autopay" label="1">Automatic Payment</el-radio>
+                <el-radio v-model="autopay" label="1">{{this.$i18n.t("pricing.automatic")}}</el-radio>
                 <div class="content">
                   <!-- Automatic Payment info Automatic Payment info Automatic Payment info Automatic Payment info Automatic
                   Payment info Automatic Payment info Automatic Payment info Automatic Payment info Automatic Payment
                   info Automatic Payment info Automatic Payment info Automatic Payment info...  -->
-                  <a @click="openDialog(1)">Details
+                  <a @click="openDialog(1)">{{this.$i18n.t("pricing.details")}}
                   ></a>
                 </div>
               </div>
@@ -378,6 +387,13 @@ export default {
         password: "",
         confirmPassword: ""
       },      
+      paymentForm: {
+        "firstName": "",
+        "lastName": "",
+        "cardNumber": "",
+        "expiryDate": "",
+        "cvv": ""
+      },
       dialogVisible: false,
       payType: '1',
       remember: true,
@@ -396,7 +412,7 @@ export default {
         label: '2'
       }],
       listPlans: [],
-      currentPlan:{}      
+      currentPlan:{},
     }
   },
   created() {},
@@ -421,10 +437,10 @@ export default {
       this.currentPlan = this.listPlans[index]
     },
     join(){
-      if(this.$store.state.token === false) {
+      if(!this.$store.state.token && sessionStorage.username == undefined) {
         if(this.regForm.email === "") {
           this.$message.warning({
-            message: i18n.t("login.message"),
+            message: i18n.t("register.email-msg1"),
             showClose: true
           });
           return;
@@ -432,35 +448,35 @@ export default {
         var reg=/^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
         if(!reg.test(this.regForm.email)){
            this.$message.warning({
-            message: '请输入有效的邮箱',
+            message: i18n.t("register.email-msg1"),
             showClose: true
           });
           return;
         }
         if(this.regForm.password.trim() === "") {
             this.$message.warning({
-            message: '密码不能为空',
+            message: i18n.t("register.password-msg1"),
             showClose: true
           });
           return;
         }
         if(this.regForm.password.trim().length <= 6) {
             this.$message.warning({
-            message: "密码长度不能小于6位",
+            message: i18n.t("register.password-legth"),
             showClose: true
           });
           return;
         }
         if(this.regForm.confirmPassword.trim() === "") {
             this.$message.warning({
-            message: '确认密码不能为空',
+            message: i18n.t("register.confirm-password-msg1"),
             showClose: true
           });
           return;
         }
          if(this.regForm.confirmPassword.trim() != this.regForm.password.trim()) {
             this.$message.warning({
-            message: "两次密码不相同",
+            message: i18n.t("changepassword.messgae-confirm-password-equal"),
             showClose: true
           });
           return;
@@ -485,6 +501,7 @@ export default {
             }
             that.$store.commit('setToken', response.data.data.token)
             that.$store.commit('setUserInfo', v)
+            this.payment()
             that.$router.push("/myPlan");
           } else {
             this.$message.warning({
@@ -496,7 +513,7 @@ export default {
 
     },
     renew(){
-
+        this.payment()
     },    
     // 付费策略接口
     listPlan() {
@@ -530,33 +547,73 @@ export default {
           }
         });
     },
-    payment(amount) {
-        var key = 'A1001CTYCxgwTHvadCWKyV9m/ixKCimCqN/cv5/2+SiU0iNc267zZAdNMpqUkizVY9tG7J',
-      password = 's4nydboX',
-      endpoint = 'sandbox';// Create the eWAY Client
-      var client = rapid.createClient(key, password, endpoint);
-      client.createTransaction(rapid.Enum.Method.RESPONSIVE_SHARED, {
-      "Payment": {
-      "TotalAmount": amount
-      },
-      // Change these to your server
-      "RedirectUrl": "http://www.eway.com.au",
-      "CancelUrl": "http://www.eway.com.au",
-      "TransactionType": "Purchase"
-      }).then(function(response){
-        if (response.getErrors().length == 0) {
-          var redirectURL = response.get('SharedPaymentUrl');
-          return redirectURL
-        } else {
-        response.getErrors().forEach(function(error) {
-          console.log("Response Messages: " + rapid.getMessage(error, "en"));
-        });
+    p(s) {
+      return s < 10 ? '0' + s : s
+    },
+    payment() {
+      const that = this      
+      const d = this.paymentForm.expiryDate
+      // const resDate = d.getFullYear() + '-' + this.p((d.getMonth() + 1)) + '-' + this.p(d.getDate())
+      const year = d.getFullYear()
+      const month = this.p((d.getMonth() + 1))
+      this.$ajax({
+        method: "post",
+        url: this.$store.state.siteroot + "restful/vpn/pay/"+that.$store.state.token,
+        params: {
+          "amount": that.currentPlan.actualFee,
+          "cvn": that.paymentForm.cvv,
+          "name": that.paymentForm.firstName+that.paymentForm.lastName,
+          "number": that.paymentForm.cardNumber,          
+          "expiryYear": year,
+          "expiryMonth": month
         }
-      }).catch(function(reason){
-        reason.getErrors().forEach(function(error) {
-          console.log("Response Messages: " + rapid.getMessage(error, "en"));
-        });
-      })
+      }).then(response => {
+        if (response.data.code === 0) {          
+          // that.listPlans = response.data.data
+          // this.currentPlan = response.data.data[1]
+        } else {            
+          if(response.data.msg == 'invalid token') {
+            this.$store.commit('setToken','');
+            sessionStorage.removeItem("username");
+              
+            this.$router.push({
+              path: '/login'
+            })
+            return
+          } 
+          this.$message.warning({
+            message: response.data.msg,
+            showClose: true
+          });
+        }
+      });
+
+      // var key = 'A1001CTYCxgwTHvadCWKyV9m/ixKCimCqN/cv5/2+SiU0iNc267zZAdNMpqUkizVY9tG7J',
+      // password = 's4nydboX',
+      // endpoint = 'sandbox';// Create the eWAY Client
+      // var client = rapid.createClient(key, password, endpoint);
+      // client.createTransaction(rapid.Enum.Method.RESPONSIVE_SHARED, {
+      // "Payment": {
+      // "TotalAmount": amount
+      // },
+      // // Change these to your server
+      // "RedirectUrl": "http://www.eway.com.au",
+      // "CancelUrl": "http://www.eway.com.au",
+      // "TransactionType": "Purchase"
+      // }).then(function(response){
+      //   if (response.getErrors().length == 0) {
+      //     var redirectURL = response.get('SharedPaymentUrl');
+      //     return redirectURL
+      //   } else {
+      //   response.getErrors().forEach(function(error) {
+      //     console.log("Response Messages: " + rapid.getMessage(error, "en"));
+      //   });
+      //   }
+      // }).catch(function(reason){
+      //   reason.getErrors().forEach(function(error) {
+      //     console.log("Response Messages: " + rapid.getMessage(error, "en"));
+      //   });
+      // })
     }
   }
 }

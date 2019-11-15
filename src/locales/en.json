@@ -4,6 +4,8 @@
         "pricing": "Pricing",
         "apps": "Download",
         "account": "My Account",
+        "login": "Login",
+        "register": "Register",
         "myplan": "My plan",
         "referral": "Referral",
         "changepassword": "Change Password",
@@ -21,7 +23,7 @@
         "bottom-9": "Follow Us"
     },
     "home":{
-        "h2": "Unrestricted Internet",
+        "h2": "Easy to access secure internet at anywhere",
         "ul-li-1": "Security",
         "ul-li-2": "Freedom",
         "ul-li-3": "Private",
@@ -46,7 +48,9 @@
     "login": {
         "title": "Login",
         "account": "Account",
+        "account-msg1":"Please input the email address",
         "password": "Password",
+        "password-msg1": "Please enter your password",
         "button": "Login",
         "forgotLabel": "Forgot Password?",
         "createLabel": "Create an account",
@@ -56,9 +60,14 @@
         "title": "Register",
         "account": "Account",
         "password": "Password",
+        "password-msg1": "Password can not be blank",
         "confirmpassword": "Password Confirmation",
         "button": "Register",
-        "message": "Registration is successful,please login"
+        "message": "Registration is successful,please login",
+        "email-msg1": "Please enter a valid email address",
+        "email-msg2": "Please input the email address",
+        "password-legth": "Password length needs to be greater than 6 digits",
+        "confirm-password-msg1": "Confirm password can not be blank"
     },
     "changepassword": {
         "title": "Change Password",
@@ -72,7 +81,7 @@
         "message-login": "Please sign in",
         "message-old-password": "Old password cannot be empty",
         "message-password-length": "Password length needs to be greater than 6 digits",
-        "message-confirm-password": "confirm password can not be blank",
+        "message-confirm-password": "Confirm password can not be blank",
         "messgae-confirm-password-equal": "Enter two passwords differently"
     },
     "referral":{
@@ -95,13 +104,16 @@
     "forgotpassword":{
         "title": "Forgot Password",
         "account": "Email",
-        "verifiaccount": "Please enter verification code",
+        "account-msg1":"Please input the email address",
+        "verifiaccount": "Verification code",
+        "verifiaccount-msg": "Please enter verification code",
         "send": "Send code",
         "password": "New Password",
+        "password-msg": "Password length needs to be greater than 6 digits",
         "confirmpassword": "Password Confirmation",
         "button": "Submit",
         "login": "Login Now",
-        "email-message": "Please enter your account",
+        "email-message": "Please input the email address",
         "code-message": "Please enter verification code",
         "code-send-message": "Verification code sent",
         "success": "Password reset complete"
@@ -127,7 +139,19 @@
         "confirmpassword-label": "Password Confirmation",
         "form-label": "By submitting this form, you agree to our",
         "service": "Terms of Service.",
-        "ul-li-head": "Plan Details"
+        "ul-li-head": "Plan Details",
+        "first-name": "First Name",
+        "last-name": "Last Name",
+        "card-number": "Credit card number",
+        "expiry-date": "Expiry Date",
+        "select-date": "Select date",
+        "remember": "Remember the payment info",
+        "automatic": "Automatic Payment",
+        "details": "Details",
+        "credit-card": "Credit Card",
+        "discount": "Discount",
+        "vat": "VAT",
+        "total": "Total"
     },
     "myplan": {
         "h2": "My Plan",

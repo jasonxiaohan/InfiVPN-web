@@ -22,11 +22,11 @@ export default {
       langList: [
         {
           value: 'zh',
-          label: '翻译'
+          label: '语言'
         },
         {
           value: 'en',
-          label: 'Translation'
+          label: 'Language'
         }
       ],
       localList: [{

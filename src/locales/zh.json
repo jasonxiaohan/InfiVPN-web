@@ -4,6 +4,8 @@
         "pricing": "套餐专区",
         "apps": "客户端下载",
         "account": "我的账号",
+        "login": "登录",
+        "register": "注册",
         "myplan": "我的套餐",
         "referral": "推荐朋友",
         "changepassword": "修改密码",
@@ -21,7 +23,7 @@
         "bottom-9": "联系我们"
     },
     "home":{
-        "h2": "无限制上网",
+        "h2": "千山万水 一键回家",
         "ul-li-1": "安全",
         "ul-li-2": "自由",
         "ul-li-3": "私有",
@@ -46,7 +48,9 @@
     "login": {
         "title": "登录",
         "account": "帐号",
+        "account-msg1":"请输入邮箱地址",
         "password": "密码",
+        "password-msg1": "请输入密码",
         "button": "登录",
         "forgotLabel": "忘记密码?",
         "createLabel": "注册",
@@ -56,9 +60,14 @@
         "title": "注册",
         "account": "帐号",
         "password": "密码",
+        "password-msg1": "密码不能为空",
         "confirmpassword": "确认密码",
         "button": "注册",
-        "message": "注册成功，请登录"
+        "message": "注册成功，请登录",
+        "email-msg1": "请输入有效的邮箱地址",
+        "email-msg2": "请输入邮箱地址",
+        "password-legth": "密码长度需要大于6位",
+        "confirm-password-msg1": "确认密码不能为空"
     },
     "changepassword": {
         "title": "更改密码",
@@ -95,13 +104,17 @@
     "forgotpassword":{
         "title": "忘记密码",
         "account": "帐号",
-        "verifiaccount": "输入验证码",
+        "account-msg1":"请输入邮箱地址",
+        "verifiaccount": "验证码",
+        "verifiaccount-msg": "请输入验证码",
         "send": "发送验证码",
         "password": "新密码",
+        "password-msg": "密码长度需要大于6位",
         "confirmpassword": "确认密码",
+        "confirmpassword-msg": "",
         "button": "提交",
         "login": "去登录",
-        "email-message": "请输入帐号",
+        "email-message": "请输入邮箱地址",
         "code-message": "请输入验证码",
         "code-send-message": "验证码已发送",
         "success": "密码修改成功"
@@ -127,7 +140,19 @@
         "confirmpassword-label": "确认密码",        
         "form-label": "提交此表格，即表示同意",
         "service": "服务条款",
-        "ul-li-head": "套餐详情"
+        "ul-li-head": "套餐详情",
+        "first-name": "姓",
+        "last-name": "名",
+        "card-number": "信用卡号",
+        "expiry-date": "到期日",
+        "select-date": "选择日期",
+        "remember": "记住付款信息",
+        "automatic": "自动付款",
+        "details": "详情",
+        "credit-card": "信用卡",
+        "discount": "折扣",
+        "vat": "增值税",
+        "total": "总计"
     },
     "myplan": {
         "h2": "我的套餐",

@@ -7,11 +7,12 @@
         <el-menu-item>The website is under construction and will be released in December</el-menu-item>
         <el-menu-item index="1" @click="goPage('/pricing')">{{this.$i18n.t("header.pricing")}}</el-menu-item>
         <el-menu-item index="2" @click="goPage('/apps')">{{this.$i18n.t("header.apps")}}<img src="../assets/home/download.png"></el-menu-item>
-        <el-menu-item v-if="isShow() === false" index="3" @click="goPage('/login')">{{this.$i18n.t("header.account")}}</el-menu-item>
+        <el-menu-item v-if="isShow() === false" index="3" @click="goPage('/login')">{{this.$i18n.t("header.login")}}</el-menu-item>
+        <el-menu-item v-if="isShow() === false" index="4" @click="goPage('/register')">{{this.$i18n.t("header.register")}}</el-menu-item>
         <el-menu-item v-if="isShow() === true" index="3" @click="goPage('/myPlan')">{{this.$i18n.t("header.account")}}</el-menu-item>
       </el-menu>
     </div>
-    <div class="user-menu" v-if="isShow()" v-show="isShow() === true">
+    <div class="user-menu" v-if="isShow() ===true" v-show="isShow() === true">
       <el-menu :default-active="activeIndex" class="el-menu user" mode="horizontal">
         <el-menu-item index="1" @click="goPage('/myPlan')"><img src="../assets/account/document_item.png">{{this.$i18n.t('header.myplan')}}
         </el-menu-item>
@@ -53,7 +54,7 @@ export default {
       })
     },
     isShow() {
-      if (this.$store.state.token && sessionStorage.username!= "") {
+      if (this.$store.state.token && sessionStorage.username!= undefined) {
         return true
       }
       this.$store.commit('setToken','');
