@@ -73,6 +73,7 @@
         "title": "Change Password",
         "text": "If you want to change your password, please click the following button to change it.",
         "oldpassword": "Old Password",
+        "oldpassword-msg": "Please enter the old password",
         "newpassword": "New Password",
         "confirmpassword": "Password Confirmation",
         "success": "Password reset complete",

@@ -4,7 +4,7 @@
     <div class="dec">{{this.$i18n.t("changepassword.text")}}</div>
     <el-form class="loginForm" label-position="top" label-width="80px" :model="loginForm">
       <el-form-item v-bind:label="$t('changepassword.oldpassword')">
-        <el-input type="password" v-model="loginForm.oldPassword" show-password></el-input>
+        <el-input type="password" v-model="loginForm.oldPassword" show-password :placeholder="$t('changepassword.oldpassword-msg')"></el-input>
       </el-form-item>
       <el-form-item v-bind:label="$t('changepassword.newpassword')">
         <el-input type="password" :placeholder="$t('changepassword.message-password-length')" v-model="loginForm.newPassword" show-password></el-input>

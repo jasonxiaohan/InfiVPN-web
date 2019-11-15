@@ -73,6 +73,7 @@
         "title": "更改密码",
         "text": "如果你想改变你的密码，请点击下面的按钮来改变它.",
         "oldpassword": "旧密码",
+        "oldpassword-msg": "请输入旧密码",
         "newpassword": "新密码",
         "confirmpassword": "确认密码",
         "success": "密码修改成功",
