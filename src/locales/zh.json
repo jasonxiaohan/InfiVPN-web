@@ -9,12 +9,14 @@
         "myplan": "我的套餐",
         "referral": "推荐朋友",
         "changepassword": "修改密码",
-        "logout": "退出"
+        "logout": "退出",
+        "agreement": "用户协议",
+        "policy": "私有协议"
     },
     "bottom": {
         "bottom-1": "EasyVPN",
-        "bottom-2": "用户协议",
-        "bottom-3": "私有协议",
+        "bottom-2": "服务条款",
+        "bottom-3": "隐私策略",
         "bottom-4": "关于我们",
         "bottom-5": "关于EasyVPN",
         "bottom-6": "教程",
@@ -67,7 +69,11 @@
         "email-msg1": "请输入有效的邮箱地址",
         "email-msg2": "请输入邮箱地址",
         "password-legth": "密码长度需要大于6位",
-        "confirm-password-msg1": "确认密码不能为空"
+        "confirm-password-msg1": "确认密码不能为空",
+        "serviceTerm": "服务条款",
+        "privatePolicy": "隐私策略",
+        "service-msg": "请同意服务条款",
+        "private-msg": "请同意隐私策略"
     },
     "changepassword": {
         "title": "更改密码",
@@ -97,7 +103,7 @@
         "rewards":"我的奖赏",
         "rewards-h3": "个月前",
         "invitation-account": "账号",
-        "invitation-plan":"计划",
+        "invitation-status":"购买状态",
         "invitation-time":"注册时间",
         "rewards-extends": "延长",
         "rewards-time": "奖赏时间"
@@ -153,7 +159,8 @@
         "credit-card": "信用卡",
         "discount": "折扣",
         "vat": "增值税",
-        "total": "总计"
+        "total": "总计",
+        "omipay": "O米支付"
     },
     "myplan": {
         "h2": "我的套餐",

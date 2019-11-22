@@ -128,6 +128,8 @@ export default {
   },
   mounted() {
     this.getAccountInfo();
+    // let id = this.$route.query.id;
+    // console.log(id)
   },
   methods: {
     goPage() {

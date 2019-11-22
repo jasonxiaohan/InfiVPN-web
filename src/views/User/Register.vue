@@ -11,6 +11,10 @@
       <el-form-item v-bind:label="$t('register.confirmpassword')">
         <el-input type="admin" v-model="registerForm.confirmPassword" show-password :placeholder="$t('register.confirmpassword')"></el-input>
       </el-form-item>
+      <el-form-item class="mb-10">
+        <el-checkbox v-model="checkedService"><router-link to="/agreement">{{this.$i18n.t("register.serviceTerm")}}</router-link></el-checkbox>
+        <el-checkbox v-model="checkedPrivate"><router-link to="/policy">{{this.$i18n.t("register.privatePolicy")}}</router-link></el-checkbox>
+      </el-form-item>
       <el-form-item>
         <el-button @click="doRegister">{{this.$i18n.t("register.button")}}</el-button>
       </el-form-item>
@@ -30,7 +34,9 @@ export default {
         account: "",
         password: "",
         confirmPassword: ""
-      }
+      },
+      'checkedService': true,
+      'checkedPrivate': true,
     };
   },
   mounted() {
@@ -77,6 +83,22 @@ export default {
         });
         return;
       }      
+      // 服务条款
+      if(this.checkedService == false) {
+        this.$message.warning({
+          message: i18n.t("register.service-msg"),
+          showClose: true
+        });
+        return;
+      }
+
+      if(this.checkedPrivate == false) {
+        this.$message.warning({
+          message: i18n.t("register.private-msg"),
+          showClose: true
+        });
+        return;
+      }
 
       const that = this
       axios.request({

@@ -17,10 +17,10 @@
         <ul>
           <li class="title">{{this.$i18n.t("bottom.bottom-1")}}</li>
           <li>
-            <router-link to="/">{{this.$i18n.t("bottom.bottom-2")}}</router-link>
+            <router-link to="/agreement">{{this.$i18n.t("bottom.bottom-2")}}</router-link>
           </li>
           <li>
-            <router-link to="/">{{this.$i18n.t("bottom.bottom-3")}}</router-link>
+            <router-link to="/policy">{{this.$i18n.t("bottom.bottom-3")}}</router-link>
           </li>
         </ul>
       </el-col>
@@ -46,6 +46,7 @@
       <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="4">
         <ul class="center">
           <li class="title">{{this.$i18n.t("bottom.bottom-9")}}</li>
+          <li><a href="mailto:support@easyvpn.com.au">support@easyvpn.com.au</a></li>
           <li>
             <a href="https://facebook.com/" target="_blank"><img src="../assets/bottom/facebook.png" alt=""></a>
             <a href="www.twitter.de/" target="_blank"><img src="../assets/bottom/twitter.png" alt=""></a>
@@ -53,6 +54,9 @@
             <a href="https://www.pinterest.com/" target="_blank"><img src="../assets/bottom/pinterest.png" alt=""></a>
           </li>
         </ul>
+      </el-col>
+      <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="copyright">
+        Copyright © 2019 AUB PTY LTD . ABN 96164907724
       </el-col>
     </el-row>
   </div>

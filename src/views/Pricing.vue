@@ -160,8 +160,9 @@
       </div>
       <div class="block-payment" v-if="!ifFree">
         <div class="pay-type">
-          <el-radio-group v-model="payType">
-          <el-radio v-model="payType" label="1" border>{{this.$i18n.t("pricing.credit-card")}}
+          <el-radio-group v-model="payType" @change="changePayment">
+          <el-radio v-model="payType" label="1" border>
+            {{this.$i18n.t("pricing.credit-card")}}
             <div class="imgs">
               <img src="../assets/pricing/pay1.png" alt="">
               <img src="../assets/pricing/pay2.png" alt="">
@@ -169,6 +170,12 @@
             </div>
           </el-radio>
           <el-radio v-model="payType" label="2" border>Paypal
+            <div class="imgs">
+              <img src="../assets/pricing/pay4.png" alt="">
+            </div>
+          </el-radio>
+          <el-radio v-model="payType" label="3" border>
+            {{this.$i18n.t("pricing.omipay")}}
             <div class="imgs">
               <img src="../assets/pricing/pay4.png" alt="">
             </div>
@@ -193,6 +200,12 @@
                     <img src="../assets/pricing/pay4.png" alt="">
                   </div>
                 </template>
+                <template v-if="payType == 3">
+                  {{this.$i18n.t("pricing.omipay")}}
+                  <div class="imgs">
+                    <img src="../assets/pricing/pay4.png" alt="">
+                  </div>
+                </template>
               </div>
               <ul class="order-detail">
                 <li>
@@ -212,7 +225,7 @@
                   <div>${{(currentPlan.actualFee).toFixed(2)}}</div>
                 </li>
               </ul>
-              <el-form class="cardForm" label-position="top" :inline="true">
+              <el-form class="cardForm" label-position="top" :inline="true" v-if="ezidebit === false">
                 <el-row :gutter="20">
                   <el-col :span="12">
                     <el-form-item v-bind:label="$t('pricing.first-name')">
@@ -224,6 +237,7 @@
                       <el-input placeholder="" v-model="paymentForm.lastName"></el-input>
                     </el-form-item>
                   </el-col>
+                  
                   <el-col :span="24">
                     <el-form-item v-bind:label="$t('pricing.card-number')">
                       <el-input placeholder="" v-model="paymentForm.cardNumber"></el-input>
@@ -246,7 +260,6 @@
                       <el-input placeholder="" v-model="paymentForm.cvv"></el-input>
                     </el-form-item>
                   </el-col>
-
                   <el-col :span="24">
                     <el-form-item label="" class="rem">
                       <el-checkbox v-model="remember">{{this.$i18n.t("pricing.remember")}}</el-checkbox>
@@ -254,7 +267,7 @@
                   </el-col>
                 </el-row>
               </el-form>
-              <div class="autoPay">
+              <div class="autoPay" v-if="ezidebit === false">
                 <el-radio v-model="autopay" label="1">{{this.$i18n.t("pricing.automatic")}}</el-radio>
                 <div class="content">
                   <!-- Automatic Payment info Automatic Payment info Automatic Payment info Automatic Payment info Automatic
@@ -287,7 +300,8 @@
         <el-button class="black join" v-if="this.$store.state.token == ''" @click="join">{{this.$i18n.t("pricing.button")}}</el-button>
         <el-button class="black join" v-else @click="renew">{{this.$i18n.t("pricing.button-renew")}}</el-button>
         <div class="rules">{{this.$i18n.t("pricing.form-label")}}
-          <a @click="openDialog(2)">{{this.$i18n.t("pricing.service")}}</a>
+          <!-- <a @click="openDialog(2)">{{this.$i18n.t("pricing.service")}}</a> -->
+          <router-link to="/agreement">{{this.$i18n.t("pricing.service")}}</router-link>
         </div>
       </div>
       <div class="block-payment" v-if="ifFree">
@@ -377,6 +391,7 @@
 </template>
 
 <script>
+import config from '@/config'
 export default {
   name: 'Pricing',
   components: {},
@@ -413,10 +428,16 @@ export default {
       }],
       listPlans: [],
       currentPlan:{},
+      // 表示ezidebit支付
+      ezidebit: true
     }
   },
   created() {},
   mounted() {
+    const s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.src = 'https://static.ezidebit.com.au/javascriptapi/js/ezidebit_2_0_0.min.js';
+    document.body.appendChild(s);
     this.listPlan();
   },
   methods: {
@@ -551,8 +572,15 @@ export default {
       return s < 10 ? '0' + s : s
     },
     payment() {
-      const that = this      
-      const d = this.paymentForm.expiryDate
+      const that = this            
+      if(this.payType == "1" || this.payType == "2") {                
+        const callback = process.env.NODE_ENV === 'development' ? config.EzidebitCallback.dev : config.EzidebitCallback.pro
+        const eddr =  process.env.NODE_ENV === 'development' ? config.EzidebitEddr.dev : config.EzidebitEddr.pro
+        window.location.href = eddr+'&oAmount='+that.currentPlan.actualFee+'&oDate=0&rAmount=&rDate=0&Freq=4&dur=1&businessOrPerson=1&callback='+callback+'&cmethod=get'
+        return
+      }
+
+      const d = this.paymentForm.expiryDate      
       // const resDate = d.getFullYear() + '-' + this.p((d.getMonth() + 1)) + '-' + this.p(d.getDate())
       const year = d.getFullYear()
       const month = this.p((d.getMonth() + 1))
@@ -614,6 +642,13 @@ export default {
       //     console.log("Response Messages: " + rapid.getMessage(error, "en"));
       //   });
       // })
+    }, 
+    changePayment(value) {      
+      if(value == "3") {
+        this.ezidebit = false
+      } else {
+        this.ezidebit = true
+      }
     }
   }
 }

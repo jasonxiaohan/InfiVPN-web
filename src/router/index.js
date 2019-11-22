@@ -9,6 +9,9 @@ import Referral from './../views/User/Referral.vue'
 import Apps from './../views/Apps.vue'
 import Pricing from './../views/Pricing.vue'
 import Register from './../views/User/Register.vue'
+import userAgreement from './../views/Agreement.vue'
+import privatePolicy from './../views/Policy.vue'
+import success from './../views/Success.vue'
 import { setToken, getToken, canTurnTo, setTitle } from '@/libs/util'
 
 Vue.use(Router)
@@ -74,6 +77,21 @@ const router = new Router({
       meta: {
         requireAuth: true
       }
+    },
+    {
+      path: '/agreement',
+      name: 'userAgreement',
+      component: userAgreement
+    },
+    {
+      path: '/policy',
+      name: 'privatePolicy',
+      component: privatePolicy
+    },
+    {
+      path: '/success',
+      name: 'success',
+      component: success
     }
   ]
 })

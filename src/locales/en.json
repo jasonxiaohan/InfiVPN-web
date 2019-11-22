@@ -9,12 +9,13 @@
         "myplan": "My plan",
         "referral": "Referral",
         "changepassword": "Change Password",
-        "logout": "Log Out"
+        "agreement": "User Agreement",
+        "policy": "Private Policy"
     },
     "bottom": {
         "bottom-1": "EasyVPN",
-        "bottom-2": "User Agreement",
-        "bottom-3": "Private Policy",
+        "bottom-2": "Service Term",
+        "bottom-3": "Pravicy Policy",
         "bottom-4": "About Us",
         "bottom-5": "About EasyVPN",
         "bottom-6": "Tutorial",
@@ -67,7 +68,11 @@
         "email-msg1": "Please enter a valid email address",
         "email-msg2": "Please input the email address",
         "password-legth": "Password length needs to be greater than 6 digits",
-        "confirm-password-msg1": "Confirm password can not be blank"
+        "confirm-password-msg1": "Confirm password can not be blank",
+        "serviceTerm": "Service Term",
+        "privatePolicy": "Pravicy Policy",
+        "service-msg": "Please agree to the Terms of Service",
+        "private-msg": "Please agree to the privacy policy"
     },
     "changepassword": {
         "title": "Change Password",
@@ -97,7 +102,7 @@
         "rewards":"My Rewards",
         "rewards-h3": "months got",
         "invitation-account": "Account",
-        "invitation-plan": "plan",
+        "invitation-status": "Purchase status",
         "invitation-time":"Register Time",
         "rewards-extends": "Extends",
         "rewards-time": "Time"
@@ -152,7 +157,8 @@
         "credit-card": "Credit Card",
         "discount": "Discount",
         "vat": "VAT",
-        "total": "Total"
+        "total": "Total",
+        "omipay": "Omipay"
     },
     "myplan": {
         "h2": "My Plan",

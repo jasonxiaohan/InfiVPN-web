@@ -50,8 +50,11 @@
       <el-table :data="invitTableData" stripe style="width: 100%">
         <el-table-column prop="email" v-bind:label="$t('referral.invitation-account')">
         </el-table-column>
-        <!-- <el-table-column prop="plan" v-bind:label="$t('referral.invitation-plan')">
-        </el-table-column> -->
+        <el-table-column prop="status" v-bind:label="$t('referral.invitation-status')">
+          <template slot-scope="scope">
+            <i class="el-icon-check" v-if="scope.row.status==1"></i>
+          </template>
+        </el-table-column>
         <el-table-column prop="register" v-bind:label="$t('referral.invitation-time')">
         </el-table-column>
       </el-table>

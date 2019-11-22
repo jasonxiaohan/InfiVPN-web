@@ -20,6 +20,17 @@ export default {
     dev: 'http://3.1.238.2:8080/',
     pro: 'http://3.1.238.2:8080/'
   },
+  // 支付成功后的回调地址
+  EzidebitCallback: {
+    dev: 'http://localhost:8080/#/success/?id=1',
+    pro: 'http://daixiaohan.easyvpn.com/#/success/?id=1'
+  },
+  // 电子支付模版
+  EzidebitEddr: {
+    dev: 'https://demo.ezidebit.com.au/webddr/Request.aspx?a=A639A994-8449-46B3-870C-AF8E109B2844',
+    pro: 'https://demo.ezidebit.com.au/webddr/Request.aspx?a=A639A994-8449-46B3-870C-AF8E109B2844'
+  },
+  
   /**
    * @description 默认打开的首页的路由name值，默认为home
    */
