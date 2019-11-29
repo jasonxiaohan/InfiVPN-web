@@ -22,12 +22,12 @@ export default {
   },
   // 支付成功后的回调地址
   EzidebitCallback: {
-    dev: 'http://localhost:8080/#/success/?id=1',
-    pro: 'http://daixiaohan.easyvpn.com/#/success/?id=1'
+    dev: 'http://localhost:8080/success',
+    pro: 'http://easyvpn.com.au/success'
   },
   // 电子支付模版
   EzidebitEddr: {
-    dev: 'https://demo.ezidebit.com.au/webddr/Request.aspx?a=A639A994-8449-46B3-870C-AF8E109B2844',
+    dev: 'https://easyvpn.pay.demo.ezidebit.com.au/?preview=true',
     pro: 'https://demo.ezidebit.com.au/webddr/Request.aspx?a=A639A994-8449-46B3-870C-AF8E109B2844'
   },
   

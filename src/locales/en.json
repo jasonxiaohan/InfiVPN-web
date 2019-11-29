@@ -9,6 +9,7 @@
         "myplan": "My plan",
         "referral": "Referral",
         "changepassword": "Change Password",
+        "logout": "Log Out",
         "agreement": "User Agreement",
         "policy": "Private Policy"
     },
@@ -48,18 +49,18 @@
     },
     "login": {
         "title": "Login",
-        "account": "Account",
+        "account": "Email",
         "account-msg1":"Please input the email address",
         "password": "Password",
         "password-msg1": "Please enter your password",
         "button": "Login",
         "forgotLabel": "Forgot Password?",
         "createLabel": "Create an account",
-        "message": "Please check the account/password!"
+        "message": "Please check the email/password!"
     },
     "register": {
         "title": "Register",
-        "account": "Account",
+        "account": "Email",
         "password": "Password",
         "password-msg1": "Password can not be blank",
         "confirmpassword": "Password Confirmation",
@@ -158,7 +159,9 @@
         "discount": "Discount",
         "vat": "VAT",
         "total": "Total",
-        "omipay": "Omipay"
+        "omipay": "Omipay",
+        "deduction-1": "the payment will be taken on (",
+        "deduction-2": "), and trial user could cancel the preorder at any time in trial period."
     },
     "myplan": {
         "h2": "My Plan",

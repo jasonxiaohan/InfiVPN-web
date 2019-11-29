@@ -169,11 +169,11 @@
               <!-- <img src="../assets/pricing/pay3.png" alt=""> -->
             </div>
           </el-radio>
-          <el-radio v-model="payType" label="2" border>Paypal
+          <!-- <el-radio v-model="payType" label="2" border>Paypal
             <div class="imgs">
               <img src="../assets/pricing/pay4.png" alt="">
             </div>
-          </el-radio>
+          </el-radio> -->
           <el-radio v-model="payType" label="3" border>
             {{this.$i18n.t("pricing.omipay")}}
             <div class="imgs">
@@ -194,12 +194,12 @@
                     <!-- <img src="../assets/pricing/pay3.png" alt=""> -->
                   </div>
                 </template>
-                <template v-if="payType == 2">
+                <!-- <template v-if="payType == 2">
                   Paypal
                   <div class="imgs">
                     <img src="../assets/pricing/pay4.png" alt="">
                   </div>
-                </template>
+                </template> -->
                 <template v-if="payType == 3">
                   {{this.$i18n.t("pricing.omipay")}}
                   <div class="imgs">
@@ -305,7 +305,12 @@
         </div>
       </div>
       <div class="block-payment" v-if="ifFree">
-        <div class="price-free">$ <span>0.0</span></div>
+        <div class="price-free">
+          $ <span>0.0</span>
+        </div>        
+        <div class="dec">
+          <span>{{this.$i18n.t("pricing.deduction-1")}}{{this.getNowDate(0, 7)}}{{this.$i18n.t("pricing.deduction-2")}}</span>
+        </div>        
         <el-button class="black join" @click="join">{{this.$i18n.t("pricing.button")}}</el-button>
       </div>
     </section>
@@ -458,7 +463,7 @@ export default {
       this.currentPlan = this.listPlans[index]
     },
     join(){
-      if(!this.$store.state.token && sessionStorage.username == undefined) {
+      if(!this.$store.state.token || sessionStorage.username == undefined) {
         if(this.regForm.email === "") {
           this.$message.warning({
             message: i18n.t("register.email-msg1"),
@@ -502,7 +507,6 @@ export default {
           });
           return;
         }
-      }
 
         const that = this
         this.$ajax({
@@ -531,10 +535,12 @@ export default {
             });
           }
         });
-
+      } else {
+        this.payment();
+      }
     },
     renew(){
-        this.payment()
+        this.join();
     },    
     // 付费策略接口
     listPlan() {
@@ -571,12 +577,54 @@ export default {
     p(s) {
       return s < 10 ? '0' + s : s
     },
+    getNowDate(months, days) {
+      const nowDate = new Date();
+      nowDate.setDate(nowDate.getDate() + days);
+      nowDate.setMonth(nowDate.getMonth() + months)
+      let date = {
+          year: nowDate.getFullYear(),
+          month: nowDate.getMonth() + 1,
+          date: nowDate.getDate(),
+      }
+      return date.date+'/'+date.month+'/'+date.year
+    },
+    random_No(j) {
+        var random_no = "";
+        for (var i = 0; i < j; i++) //j位随机数，用以加在时间戳后面。
+        {
+            random_no += Math.floor(Math.random() * 10);
+        }
+        random_no = new Date().getTime() + random_no;
+        return random_no;
+    },
     payment() {
       const that = this            
-      if(this.payType == "1" || this.payType == "2") {                
+      if(this.payType == "1" || this.payType == "2") {     
+        const oAmount = that.currentPlan.actualFee
+        const oDate = ''
+                   
         const callback = process.env.NODE_ENV === 'development' ? config.EzidebitCallback.dev : config.EzidebitCallback.pro
         const eddr =  process.env.NODE_ENV === 'development' ? config.EzidebitEddr.dev : config.EzidebitEddr.pro
-        window.location.href = eddr+'&oAmount='+that.currentPlan.actualFee+'&oDate=0&rAmount=&rDate=0&Freq=4&dur=1&businessOrPerson=1&callback='+callback+'&cmethod=get'
+        // 免费套餐
+        if(that.currentPlan.actualFee == 0) {
+          // window.location.href = eddr+'&rAmount='+this.listPlans[1].actualFee+'&rDate='+this.getNowDate(0, 7)+'&freq=1&dur=1&businessOrPerson=1&callback='+callback+'&cmethod=get'
+          
+        }else {
+          let aFreq = 1
+          let month = 0
+          // 月
+          if(that.currentPlan.id == 1) {
+            aFreq = 4
+            month = 1
+          }
+          // 季度
+          else if(that.currentPlan.id == 2) {
+            aFreq = 16
+            month = 3
+          }
+          // window.location.href = eddr+'&oAmount='+that.currentPlan.actualFee+'&oDate=0&rAmount='+that.currentPlan.actualFee+'&rDate='+this.getNowDate(month, 0)+'&freq='+aFreq+'&dur=1&businessOrPerson=1&callback='+callback+'&cmethod=get'
+          window.location.href = eddr+'&PaymentAmount='+that.currentPlan.actualFee+'&PaymentReference='+this.random_No(6)+'&RedirectURL='+callback+'&RedirectMethod=GET'
+        }
         return
       }
 
@@ -615,33 +663,6 @@ export default {
           });
         }
       });
-
-      // var key = 'A1001CTYCxgwTHvadCWKyV9m/ixKCimCqN/cv5/2+SiU0iNc267zZAdNMpqUkizVY9tG7J',
-      // password = 's4nydboX',
-      // endpoint = 'sandbox';// Create the eWAY Client
-      // var client = rapid.createClient(key, password, endpoint);
-      // client.createTransaction(rapid.Enum.Method.RESPONSIVE_SHARED, {
-      // "Payment": {
-      // "TotalAmount": amount
-      // },
-      // // Change these to your server
-      // "RedirectUrl": "http://www.eway.com.au",
-      // "CancelUrl": "http://www.eway.com.au",
-      // "TransactionType": "Purchase"
-      // }).then(function(response){
-      //   if (response.getErrors().length == 0) {
-      //     var redirectURL = response.get('SharedPaymentUrl');
-      //     return redirectURL
-      //   } else {
-      //   response.getErrors().forEach(function(error) {
-      //     console.log("Response Messages: " + rapid.getMessage(error, "en"));
-      //   });
-      //   }
-      // }).catch(function(reason){
-      //   reason.getErrors().forEach(function(error) {
-      //     console.log("Response Messages: " + rapid.getMessage(error, "en"));
-      //   });
-      // })
     }, 
     changePayment(value) {      
       if(value == "3") {

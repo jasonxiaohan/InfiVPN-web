@@ -17,6 +17,7 @@ import { setToken, getToken, canTurnTo, setTitle } from '@/libs/util'
 Vue.use(Router)
 
 const router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
