@@ -161,7 +161,11 @@
         "total": "Total",
         "omipay": "Omipay",
         "deduction-1": "the payment will be taken on (",
-        "deduction-2": "), and trial user could cancel the preorder at any time in trial period."
+        "deduction-2": "), and trial user could cancel the preorder at any time in trial period.",
+        "pay-success": "Payment Succes",
+        "pay-fail": "Payment Failure",
+        "pay-completed": "Completed",
+        "pay-again": "Try again"
     },
     "myplan": {
         "h2": "My Plan",

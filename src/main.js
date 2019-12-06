@@ -18,11 +18,13 @@ import i18n from './locales'
 import rapid from 'eway-rapid'
 import share from 'vue-social-share'
 import Router from 'vue-router'
+import vueJsonp from 'vue-jsonp'
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 Vue.use(Vuex)
 Vue.use(share)
+Vue.use(vueJsonp)
 
 Vue.prototype.$store = store
 Vue.prototype.$ajax = axios

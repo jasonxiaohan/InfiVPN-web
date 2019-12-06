@@ -12,6 +12,7 @@ import Register from './../views/User/Register.vue'
 import userAgreement from './../views/Agreement.vue'
 import privatePolicy from './../views/Policy.vue'
 import success from './../views/Success.vue'
+import dialog from './../views/dialog.vue'
 import { setToken, getToken, canTurnTo, setTitle } from '@/libs/util'
 
 Vue.use(Router)
@@ -90,9 +91,9 @@ const router = new Router({
       component: privatePolicy
     },
     {
-      path: '/success',
-      name: 'success',
-      component: success
+      path: '/dialog',
+      name: 'dialog',
+      component: dialog 
     }
   ]
 })

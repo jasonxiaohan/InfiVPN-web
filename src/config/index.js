@@ -21,9 +21,9 @@ export default {
     pro: 'http://3.1.238.2:8080/'
   },
   // 支付成功后的回调地址
-  EzidebitCallback: {
-    dev: 'http://localhost:8080/success',
-    pro: 'http://easyvpn.com.au/success'
+  callback: {
+    dev: 'http://localhost:8080/pricing',
+    pro: 'http://easyvpn.minilott.com/pricing'
   },
   // 电子支付模版
   EzidebitEddr: {

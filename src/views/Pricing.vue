@@ -161,23 +161,23 @@
       <div class="block-payment" v-if="!ifFree">
         <div class="pay-type">
           <el-radio-group v-model="payType" @change="changePayment">
-          <el-radio v-model="payType" label="1" border>
+          <!-- <el-radio v-model="payType" label="1" border>
             {{this.$i18n.t("pricing.credit-card")}}
             <div class="imgs">
               <img src="../assets/pricing/pay1.png" alt="">
               <img src="../assets/pricing/pay2.png" alt="">
-              <!-- <img src="../assets/pricing/pay3.png" alt=""> -->
+              <img src="../assets/pricing/pay3.png" alt="">
             </div>
-          </el-radio>
-          <!-- <el-radio v-model="payType" label="2" border>Paypal
+          </el-radio> -->
+          <el-radio v-model="payType" label="2" border>Paypal
             <div class="imgs">
               <img src="../assets/pricing/pay4.png" alt="">
             </div>
-          </el-radio> -->
+          </el-radio>
           <el-radio v-model="payType" label="3" border>
             {{this.$i18n.t("pricing.omipay")}}
             <div class="imgs">
-              <img src="../assets/pricing/pay4.png" alt="">
+              <img src="../assets/pricing/pay5.png" alt="">
             </div>
           </el-radio>
           </el-radio-group>
@@ -186,24 +186,24 @@
           <el-row :gutter="20">
             <el-col :span="18" class="card-info">
               <div class="head">                
-                <template v-if="payType == 1">
+                <!-- <template v-if="payType == 1">
                   {{this.$i18n.t("pricing.credit-card")}}
                   <div class="imgs">
                     <img src="../assets/pricing/pay1.png" alt="">
                     <img src="../assets/pricing/pay2.png" alt="">
-                    <!-- <img src="../assets/pricing/pay3.png" alt=""> -->
+                    <img src="../assets/pricing/pay3.png" alt="">
                   </div>
-                </template>
-                <!-- <template v-if="payType == 2">
+                </template> -->
+                <template v-if="payType == 2">
                   Paypal
                   <div class="imgs">
                     <img src="../assets/pricing/pay4.png" alt="">
                   </div>
-                </template> -->
+                </template>
                 <template v-if="payType == 3">
                   {{this.$i18n.t("pricing.omipay")}}
                   <div class="imgs">
-                    <img src="../assets/pricing/pay4.png" alt="">
+                    <img src="../assets/pricing/pay5.png" alt="">
                   </div>
                 </template>
               </div>
@@ -392,11 +392,40 @@
         <el-button class="black close" @click="close">OK</el-button>
       </div>
     </el-dialog>
+
+    <!--付款提示框 start-->
+    <el-dialog class="extendDialog" :visible.sync="paydialogVisible" :close-on-click-modal="false" width="400px">
+      <div class="header">
+        <div class="title">
+          <diiv v-if="paydialogs === 1">{{this.$i18n.t("pricing.pay-success")}}</diiv>
+          <diiv v-if="paydialogs === 2">{{this.$i18n.t("pricing.pay-fail")}}</diiv>
+        </div>
+        <img class="close" @click="payclose" src="../assets/dialog/close.png" alt="">
+      </div>
+      <div class="dialog-content">
+        <div class="tips" v-if="paydialogs === 1">
+          <img src="../assets/dialog/success.png" alt="">
+          <div>{{ payShowName }}</div>
+          <b>$ {{ payShowAmount }}</b>
+        </div>
+        <div class="tips" v-if="paydialogs === 2">
+          <img src="../assets/dialog/fail.png" alt="">
+          <div>1 Year Plan</div>
+          <b>$ 103.50</b>
+        </div>
+        <el-button v-if="paydialogs === 1" class="black close" @click="payclose">{{this.$i18n.t("pricing.pay-completed")}}</el-button>
+        <el-button v-if="paydialogs === 2" class="black close" @click="payclose">{{this.$i18n.t("pricing.pay-again")}}</el-button>
+      </div>
+    </el-dialog>
+    <!--付款提示框 end-->
   </div>
 </template>
 
 <script>
 import config from '@/config'
+import qs from 'qs'
+import axios from 'axios'
+import JSONP from 'vue-jsonp'
 export default {
   name: 'Pricing',
   components: {},
@@ -415,12 +444,14 @@ export default {
         "cvv": ""
       },
       dialogVisible: false,
-      payType: '1',
+      paydialogVisible: false,
+      payType: '2',
       remember: true,
       autopay: '1',
       choicePlan: 1,
       ifFree: false,
       dialogs: 1,
+      paydialogs: 1,
       myPlan: 0,
       value1: '',
       value2: '',
@@ -434,16 +465,22 @@ export default {
       listPlans: [],
       currentPlan:{},
       // 表示ezidebit支付
-      ezidebit: true
+      ezidebit: true,
+      payShowName: "",
+      payShowAmount: 0
     }
   },
   created() {},
   mounted() {
-    const s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.src = 'https://static.ezidebit.com.au/javascriptapi/js/ezidebit_2_0_0.min.js';
-    document.body.appendChild(s);
+    // const s = document.createElement('script');
+    // s.type = 'text/javascript';
+    // s.src = 'https://static.ezidebit.com.au/javascriptapi/js/ezidebit_2_0_0.min.js';
+    // document.body.appendChild(s);
     this.listPlan();
+    let tx = this.$route.query.orderId
+    if(tx != undefined) {
+        this.selectPaypalOrder(tx)
+    }
   },
   methods: {
     openDialog(val) {
@@ -452,6 +489,9 @@ export default {
     },
     close() {
       this.dialogVisible = false
+    },
+    payclose() {
+      this.paydialogVisible = false
     },
     checkedPlan(index,planid) {
       this.choicePlan = planid
@@ -597,36 +637,89 @@ export default {
         random_no = new Date().getTime() + random_no;
         return random_no;
     },
-    payment() {
-      const that = this            
-      if(this.payType == "1" || this.payType == "2") {     
-        const oAmount = that.currentPlan.actualFee
-        const oDate = ''
+    payment() {      
+      const that = this      
+      // axios({
+      //   method: "post",
+      //   url: "https://www.paypal.com/cgi-bin/webscr",
+      //   headers: {
+      //     // "Content-Type": "multipart/form-data"
+      //     "Access-Control-Allow-Origin":"*"
+      //   },
+      //   withCredentials:true,
+      //   params: {
+      //     "cmd": "_s-xclick",
+      //     "hosted_button_id": "XGF5HZCCTQDGL",
+      //     "os0": "One Month",
+      //     "currency_code": "AUD"
+      //   }
+      // }).then(response => {
+      //   console.log(response);
+      // }).catch(error => {
+      //   console.log(error);
+      // });
+      // return
+
+      // if(this.payType == "1" || this.payType == "2") {     
+      //   const oAmount = that.currentPlan.actualFee
+      //   const oDate = ''
                    
-        const callback = process.env.NODE_ENV === 'development' ? config.EzidebitCallback.dev : config.EzidebitCallback.pro
-        const eddr =  process.env.NODE_ENV === 'development' ? config.EzidebitEddr.dev : config.EzidebitEddr.pro
-        // 免费套餐
-        if(that.currentPlan.actualFee == 0) {
-          // window.location.href = eddr+'&rAmount='+this.listPlans[1].actualFee+'&rDate='+this.getNowDate(0, 7)+'&freq=1&dur=1&businessOrPerson=1&callback='+callback+'&cmethod=get'
+      //   const callback = process.env.NODE_ENV === 'development' ? config.EzidebitCallback.dev : config.EzidebitCallback.pro
+      //   const eddr =  process.env.NODE_ENV === 'development' ? config.EzidebitEddr.dev : config.EzidebitEddr.pro
+      //   // 免费套餐
+      //   if(that.currentPlan.actualFee == 0) {
+      //     // window.location.href = eddr+'&rAmount='+this.listPlans[1].actualFee+'&rDate='+this.getNowDate(0, 7)+'&freq=1&dur=1&businessOrPerson=1&callback='+callback+'&cmethod=get'
           
-        }else {
-          let aFreq = 1
-          let month = 0
-          // 月
-          if(that.currentPlan.id == 1) {
-            aFreq = 4
-            month = 1
-          }
-          // 季度
-          else if(that.currentPlan.id == 2) {
-            aFreq = 16
-            month = 3
-          }
-          // window.location.href = eddr+'&oAmount='+that.currentPlan.actualFee+'&oDate=0&rAmount='+that.currentPlan.actualFee+'&rDate='+this.getNowDate(month, 0)+'&freq='+aFreq+'&dur=1&businessOrPerson=1&callback='+callback+'&cmethod=get'
-          window.location.href = eddr+'&PaymentAmount='+that.currentPlan.actualFee+'&PaymentReference='+this.random_No(6)+'&RedirectURL='+callback+'&RedirectMethod=GET'
+      //   }else {
+      //     let aFreq = 1
+      //     let month = 0
+      //     // 月
+      //     if(that.currentPlan.id == 1) {
+      //       aFreq = 4
+      //       month = 1
+      //     }
+      //     // 季度
+      //     else if(that.currentPlan.id == 2) {
+      //       aFreq = 16
+      //       month = 3
+      //     }
+      //     // window.location.href = eddr+'&oAmount='+that.currentPlan.actualFee+'&oDate=0&rAmount='+that.currentPlan.actualFee+'&rDate='+this.getNowDate(month, 0)+'&freq='+aFreq+'&dur=1&businessOrPerson=1&callback='+callback+'&cmethod=get'
+      //     window.location.href = eddr+'&PaymentAmount='+that.currentPlan.actualFee+'&PaymentReference='+this.random_No(6)+'&RedirectURL='+callback+'&RedirectMethod=GET'
+      //   }
+      //   return
+      // }
+
+      // paypal支付
+      if(this.payType == 2) {
+        // 1month
+        if(this.currentPlan.id == 1) {
+          window.location.href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DPVCKNVX9FWPJ&os0=One+Month&currency_code=AUD&item_number=201912067655'
+        }
+        //3month
+        else if(this.currentPlan.id == 2) {
+          window.location.href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DPVCKNVX9FWPJ&os0=One+Quarter&currency_code=AUD&item_number=201912067655'
         }
         return
+      } else if(this.payType == 3) {
+        let callback = process.env.NODE_ENV === 'development' ? config.callback.dev : config.callback.pro
+        this.$ajax({
+            method: "post",
+            url: this.$store.state.siteroot+"restful/vpn/omipay/"+that.$store.state.token,
+            params: {
+              "account": this.getUserInfo(),
+              "amount": 0.01,
+              "planId": that.currentPlan.id,
+              "planName": that.currentPlan.name,
+              "redirectUrl": callback
+            }
+        }).then(response => {
+          if(response.data.code === 0) {
+            window.location.href = response.data.data[0].url
+            return
+          }
+        })
       }
+      return
 
       const d = this.paymentForm.expiryDate      
       // const resDate = d.getFullYear() + '-' + this.p((d.getMonth() + 1)) + '-' + this.p(d.getDate())
@@ -665,12 +758,41 @@ export default {
       });
     }, 
     changePayment(value) {      
+      this.ezidebit = true
+      return
       if(value == "3") {
         this.ezidebit = false
       } else {
         this.ezidebit = true
       }
-    }
+    },
+    getUserInfo() {
+      if( this.$store.state.username!= "")
+        return this.$store.state.username;
+      return sessionStorage.username;      
+    },
+
+    // 查询paypal支付状态 
+    selectPaypalOrder(tx) {
+      let that = this
+      if(this.$store.state.token || sessionStorage.username != undefined) {
+        // 查询订单状态
+        this.$ajax({
+            method: "post",
+            url: this.$store.state.siteroot+"restful/vpn/payStatus/"+that.$store.state.token,
+            params: {
+              "orderId": tx
+            }
+        }).then(response => {
+          if(response.data.code === 0) {
+            this.payShowName = response.data.data[0].planName
+            this.payShowAmount = response.data.data[0].amount
+            this.paydialogVisible = true
+          }
+        })
+      }
+      
+    } 
   }
 }
 

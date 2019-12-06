@@ -162,7 +162,11 @@
         "total": "总计",
         "omipay": "O米支付",
         "deduction-1": "系统将于",
-        "deduction-2": "结束后自动续费，您可随时取消订阅。"
+        "deduction-2": "结束后自动续费，您可随时取消订阅。",
+        "pay-success": "支付成功",
+        "pay-fail": "支付失败",
+        "pay-completed": "完成",
+        "pay-again": "重试"
     },
     "myplan": {
         "h2": "我的套餐",
